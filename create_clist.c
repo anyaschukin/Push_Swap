@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 18:20:38 by aschukin          #+#    #+#             */
-/*   Updated: 2018/04/17 18:56:38 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/04 14:48:06 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ void	add_to_head(t_clist *root, int data) // THIS WORKS!!
 	if (new != NULL)
 	{
 		new->data = data;
-	//	new->next = root;
-	//	new->prev = root->prev;
 		new->next = root->next;
 		new->prev = root;
 		if (root->next == root)
@@ -51,8 +49,6 @@ void	add_to_head(t_clist *root, int data) // THIS WORKS!!
 		}
 		else
 		{
-		//	root->prev->next = new;
-		//	root->prev = new;
 			root->next = new;
 			root->next->prev = new;
 		}
