@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 14:50:07 by dhojt             #+#    #+#             */
-/*   Updated: 2018/05/04 17:51:02 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/04 22:43:15 by yabdulha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,29 @@
 #include <limits.h>
 #include <stdio.h>
 
-// check all digits, spaces, look for duplicates
+// TODO check all digits, spaces, look for duplicates
+
+int		check_duplicate(t_clist *head)
+{
+	t_clist *tmp1;
+	t_clist	*tmp2;
+
+	tmp1 = head;
+	while (tmp1 != NULL && tmp1->next != head)
+	{
+		tmp2 = tmp1->next;
+		while (tmp2 != NULL && tmp2 != head)
+		{
+			if (tmp2->data == tmp1->data)
+			{
+				return (0);
+			}
+			tmp2 = tmp2->next;
+		}
+		tmp1 = tmp1->next;
+	}
+	return (1);
+}
 
 t_clist	*parser(char *str)
 {
@@ -22,7 +44,7 @@ t_clist	*parser(char *str)
 	size_t test;
 	int i;
 	int j;
-	
+
 	i = 0;
 	j = 0;
 	astack = NULL;
@@ -32,25 +54,30 @@ t_clist	*parser(char *str)
 			i++;
 		else if (ft_isdigit(str[i]))
 			i++;
-		else if (str[i] == '-' && ft_isdigit(str[i + 1]) && (i != 0 && str[i - 1] == ' '))
+		else if (str[i] == '-' && ft_isdigit(str[i + 1]) &&
+				(i == 0 || str[i - 1] == ' '))
 			i++;
-		else if (str[i] == '+' && ft_isdigit(str[i + 1]) && (i != 0 && str[i - 1] == ' '))
+		else if (str[i] == '+' && ft_isdigit(str[i + 1]) &&
+				(i == 0 || str[i - 1] == ' '))
 			i++;
 		else
 			error_exit("Error\n", 1);
 	}
-	i = -1;
-	while (str[++i])
+	i = 0;
+	while (str[i])
 	{
 		j = 0;
-		while (str[i] == ' ')
+		while (str[i] != '\0' && str[i] == ' ')
 			i++;
-		while (str[i + j] == '-' || str[i + j] == '+' || ft_isdigit(str[i + j]))
+		while (str[i + j] != '\0' && (str[i + j] == '-' ||
+					str[i + j] == '+' || ft_isdigit(str[i + j])))
 		{
 			j++;
 			if (j > 11)
 				error_exit("Error\n", 1);
 		}
+		if (str[i] == '\0')
+			break;
 		if (!astack)
 			astack = create_clist(astack, ft_atoi(str + i));
 		else

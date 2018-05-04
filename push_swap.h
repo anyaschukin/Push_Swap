@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 16:55:38 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/04 17:08:24 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/04 22:02:34 by yabdulha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct	s_clist
 	char			c;
 	struct s_clist	*next;
 	struct s_clist	*prev;
-	size_t			nb_elements;
 }				t_clist;
 
 
@@ -44,5 +43,6 @@ void		remove_first_element(t_clist *head);
 void		remove_last_element(t_clist *head);
 
 t_clist		*parser(char *str);
+int			check_duplicate(t_clist *head);
 
 #endif

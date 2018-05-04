@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 17:08:37 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/04 17:48:43 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/04 21:26:56 by yabdulha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	main(int ac, char **av)
 		while (av[i])
 		{
 			res = parser(av[i++]);
-			printf("Stack A = %d, %d, %d, %d\n", res->data, res->next->data, res->next->next->data, res->next->next->next->data);
+			printf("Stack A = %d, %d, %d, %d, %d\n", res->data, res->next->data, res->next->next->data, res->next->next->next->data, res->next->next->next->next->data);
+		printf((check_duplicate(res) == 1) ? "OK\n" : "KO\n");
+		if (check_duplicate(res) == 1)
+			printf("There are no duplicates\n");
 		}
 		ac--;
 	}
