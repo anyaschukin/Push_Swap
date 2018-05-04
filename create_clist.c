@@ -18,21 +18,21 @@
 
 t_clist*	create_clist(t_clist *tmp, int data)
 {
-	t_clist	*root;
+	t_clist	*head;
 
-	tmp = root;
-	if (!(root = (t_clist*)malloc(sizeof(*root))))
+	tmp = head;
+	if (!(head = (t_clist*)malloc(sizeof(*head))))
 			return (NULL);
-	if (root)
+	if (head)
 	{
-		root->prev = NULL;
-		root->next = NULL;
-		root->data = data;
+		head->prev = NULL;
+		head->next = NULL;
+		head->data = data;
 	}
-	return (root);
+	return (head);
 }
 
-void	add_to_head(t_clist *root, int data) // THIS WORKS!!
+void	add_to_top(t_clist *head, int data) // THIS WORKS!!
 {
 	t_clist *new;
 
@@ -40,22 +40,22 @@ void	add_to_head(t_clist *root, int data) // THIS WORKS!!
 	if (new != NULL)
 	{
 		new->data = data;
-		new->next = root->next;
-		new->prev = root;
-		if (root->next == root)
+		new->next = head->next;
+		new->prev = head;
+		if (head->next == head)
 		{
-			root->next = new;
-			root->prev = new;
+			head->next = new;
+			head->prev = new;
 		}
 		else
 		{
-			root->next = new;
-			root->next->prev = new;
+			head->next = new;
+			head->next->prev = new;
 		}
 	}
 }
 
-void	add_to_end(t_clist *root, int data) // THIS WORKS!!
+void	add_to_tail(t_clist *head, int data) // THIS WORKS!!
 {
 	t_clist *new;
 
@@ -63,9 +63,9 @@ void	add_to_end(t_clist *root, int data) // THIS WORKS!!
 	if (new != NULL)
 	{
 		new->data = data;
-		new->next = root;
-		new->prev = (root->next) ? root->prev : root;
-		root->prev = new;
+		new->next = head;
+		new->prev = (head->next) ? head->prev : head;
+		head->prev = new;
 		new->prev->next = new;
 	}
 }

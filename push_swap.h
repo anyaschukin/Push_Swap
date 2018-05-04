@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 16:55:38 by aschukin          #+#    #+#             */
-/*   Updated: 2018/04/17 16:08:56 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/04 17:08:24 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ typedef struct	s_clist
 t_clist*	create_clist(t_clist *tmp, int data);
 void		add_before(t_clist *element, int data);
 void		add_after(t_clist *element, int data);
-void		add_to_head(t_clist *root, int data);
-void		add_to_end(t_clist *root, int data);
+void		add_to_top(t_clist *head, int data);
+void		add_to_tail(t_clist *head, int data);
 
 void		remove_element(t_clist *element);
-void		remove_first_element(t_clist *root);
-void		remove_last_element(t_clist *root);
+void		remove_first_element(t_clist *head);
+void		remove_last_element(t_clist *head);
+
+t_clist		*parser(char *str);
 
 #endif
