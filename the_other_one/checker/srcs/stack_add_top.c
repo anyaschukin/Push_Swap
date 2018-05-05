@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_add_end.c                                    :+:      :+:    :+:   */
+/*   stack_add_top.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/05 02:14:00 by dhojt             #+#    #+#             */
-/*   Updated: 2018/05/05 18:48:33 by dhojt            ###   ########.fr       */
+/*   Created: 2018/05/05 20:53:25 by dhojt             #+#    #+#             */
+/*   Updated: 2018/05/05 22:18:21 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,47 @@
 
 void		stack_add_top(t_frame *frame, char c, int num)
 {
-	t_stack		*top;
+	t_stack		**top;
 	t_stack		*tmp;
 
 	DEBUG("%s\n", "  STACK_ADD_END");//////////
 	if (c == 'a')
-		top = frame->a;
+		top = &frame->a;
 	else if (c == 'b')
-		top = frame->b;
+		top = &frame->b;
 	else
 		write(1, "Whoa!\n", 6);
 
-	DEBUG("Value of TOP[%p]\n", top);//////////
-	if (top)
+	DEBUG("Value of TOP[%p]\n", *top);//////////
+	if (*top)
 	{
 		DEBUG("%s\n", "Inside first if. 1");//////////
 		if (!(tmp = (t_stack *)malloc(sizeof(t_stack))))
 			push_swap_exit(frame);
 		DEBUG("%s\n", "Inside first if. 2");//////////
-		tmp->next = top;
+		tmp->next = *top;
 		DEBUG("%s\n", "Inside first if. 3");//////////
-		tmp->prev = top->prev;
+		tmp->prev = (*top)->prev;
 		DEBUG("%s\n", "Inside first if. 4");//////////
-		top->prev = tmp;
+		(*top)->prev = tmp;
 		DEBUG("%s\n", "Inside first if. 5");//////////
 		tmp->prev->next = tmp;
 		DEBUG("%s\n", "Inside first if. 6");//////////
 		tmp->num = num;
 		DEBUG("%s\n", "Inside first if. 7");//////////
-		frame->a = frame->a->prev;
+		*top = (*top)->prev;
 	}
 	else
 	{
 		DEBUG("%s\n", "Inside second if. 1");//////////
-		if (!(top = (t_stack *)malloc(sizeof(t_stack))))
+		if (!(*top = (t_stack *)malloc(sizeof(t_stack))))
 			push_swap_exit(frame);
 		DEBUG("%s\n", "Inside second if. 2");//////////
-		top->next = top;
+		(*top)->next = *top;
 		DEBUG("%s\n", "Inside second if. 3");//////////
-		top->prev = top;
+		(*top)->prev = *top;
 		DEBUG("%s\n", "Inside second if. 4");//////////
-		top->num = num;
+		(*top)->num = num;
 		DEBUG("%s\n", "Inside second if. 5");//////////
-		frame->a = top;
 	}
 }
