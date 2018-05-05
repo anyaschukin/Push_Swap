@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 17:33:18 by dhojt             #+#    #+#             */
-/*   Updated: 2018/05/05 17:34:16 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/05/05 18:48:15 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-# define DEBUG(f_, ...); printf((f_), __VA_ARGS__);
+//OFF
+# define DEBUG(f_, ...); printf("");
+
+//ON
+//# define DEBUG(f_, ...); printf((f_), __VA_ARGS__);
 
 typedef struct		s_stack
 {
@@ -38,6 +42,7 @@ typedef struct		s_frame
 void				checker(t_frame *frame);
 void				push_swap_exit(t_frame *frame);
 void				fill_stack_a(t_frame *frame);
+void				stack_add_top(t_frame *frame, char c, int num);
 void				stack_add_end(t_frame *frame, char c, int num);
 t_frame				*create_frame(t_frame *frame, int argc, char **argv);
 #endif
