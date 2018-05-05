@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 17:33:18 by dhojt             #+#    #+#             */
-/*   Updated: 2018/05/05 18:48:15 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/05/05 23:29:55 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ typedef struct		s_frame
 void				checker(t_frame *frame);
 void				push_swap_exit(t_frame *frame);
 void				fill_stack_a(t_frame *frame);
-void				stack_add_top(t_frame *frame, char c, int num);
-void				stack_add_end(t_frame *frame, char c, int num);
+void				stack_del_top(t_frame *frame, char stack_name);
+void				stack_add_top(t_frame *frame, char stack_name, int num);
+void				stack_add_end(t_frame *frame, char stack_name, int num);
 t_frame				*create_frame(t_frame *frame, int argc, char **argv);
 #endif
