@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 14:50:07 by dhojt             #+#    #+#             */
-/*   Updated: 2018/05/04 22:43:15 by yabdulha         ###   ########.fr       */
+/*   Updated: 2018/05/05 17:05:54 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int		check_duplicate(t_clist *head)
 
 t_clist	*parser(char *str)
 {
-	t_clist *astack;
-	size_t test;
-	int i;
-	int j;
+	t_clist	*astack;
+	size_t	test;
+	long	tmp;
+	int		i;
+	long	j;
 
 	i = 0;
-	j = 0;
 	astack = NULL;
 	while (str[i])
 	{
@@ -78,10 +78,13 @@ t_clist	*parser(char *str)
 		}
 		if (str[i] == '\0')
 			break;
+		tmp = ft_atoi_long(str + i);
+		if (tmp > 2147483647 || tmp < -2147483648)
+			error_exit("Error\n", 1);
 		if (!astack)
-			astack = create_clist(astack, ft_atoi(str + i));
+			astack = create_clist(astack, tmp);
 		else
-			add_to_tail(astack, ft_atoi(str + i));
+			add_to_tail(astack, tmp);
 		str = str + j;
 	}
 	return (astack);
