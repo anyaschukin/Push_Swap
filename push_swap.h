@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 16:55:38 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/05 16:51:33 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/05 21:05:07 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ void		remove_last_element(t_clist *head);
 
 t_clist		*parser(char *str);
 int			check_duplicate(t_clist *head);
+
+void		swap(t_clist **head);
 
 #endif
