@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 02:09:32 by dhojt             #+#    #+#             */
-/*   Updated: 2018/05/06 05:03:58 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/05/06 15:26:56 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ void			do_launch(t_frame *frame)
 		free(line);
 		do_now = do_launch_value(execute_value);
 		do_now(frame);
+		display_stacks(frame);
 	}
+	free(str);
 }
