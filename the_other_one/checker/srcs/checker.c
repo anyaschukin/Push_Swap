@@ -6,22 +6,24 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 16:56:43 by dhojt             #+#    #+#             */
-/*   Updated: 2018/05/05 23:35:43 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/05/06 05:22:48 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
 /*
-** Main passes argv to checker only if argc is greater than 1/
-** Checker asks get_arg_list to return a valid s_args.
+** Checker is launched by the main.
+** fill_stack_a is called to fill stack a with argv.
+** do_launch get command line arguments and executes the commands.
+** sort_test tests for if stack a is sorted or not following push swap.
 */
 
 void			checker(t_frame *frame)
 {
-	DEBUG("%s\n", "   CHECKER.");//////////
 	fill_stack_a(frame);
-	DEBUG("%s\n", "returned to checker from fill_stack_a");//////////
-	if (frame->a)
-		printf("Stack a [%ld] [%ld] [%ld] [%ld] \n", frame->a->num, frame->a->next->num, frame->a->next->next->num, frame->a->next->next->next->num);
+	display_stacks(frame);
+	do_launch(frame);
+	sort_test(frame);
+	push_swap_free(frame);
 }

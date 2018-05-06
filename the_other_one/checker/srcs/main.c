@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 18:40:32 by dhojt             #+#    #+#             */
-/*   Updated: 2018/05/05 03:46:54 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/05/06 05:05:22 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,10 @@ int		main(int argc, char **argv)
 {
 	t_frame		*frame;
 
-	DEBUG("%s\n", "   MAIN.");//////////
 	frame = NULL;
-	DEBUG("%s\n", "frame assigned null");//////////
 	if (argc < 2)
-		push_swap_exit(frame);
+		push_swap_error(frame);
 	frame = create_frame(frame, argc, argv);
-	DEBUG("%s\n", "frame created");//////////
 	checker(frame);
-	DEBUG("%s\n", "   MAIN END");//////////
 	return (0);
 }

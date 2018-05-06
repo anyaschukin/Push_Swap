@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_exit.c                                   :+:      :+:    :+:   */
+/*   push_swap_free.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/04 22:14:39 by dhojt             #+#    #+#             */
-/*   Updated: 2018/05/05 02:50:19 by dhojt            ###   ########.fr       */
+/*   Created: 2018/05/06 05:10:39 by dhojt             #+#    #+#             */
+/*   Updated: 2018/05/06 05:13:00 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ static void		free_frame(t_frame *frame)
 	}
 }
 
-void			push_swap_exit(t_frame *frame)
+void			push_swap_free(t_frame *frame)
 {
-	write(1, "Error\n", 6);
 	free_frame(frame);
-	exit(-1);
 }

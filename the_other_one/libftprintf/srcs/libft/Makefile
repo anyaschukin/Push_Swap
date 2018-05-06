@@ -6,7 +6,7 @@
 #    By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/27 15:32:02 by dhojt             #+#    #+#              #
-#    Updated: 2018/05/02 15:52:06 by dhojt            ###   ########.fr        #
+#    Updated: 2018/05/06 07:20:44 by dhojt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,6 +95,7 @@ CFILE =			ft_atoi.c \
 				ft_strupcase.c \
 				ft_tolower.c \
 				ft_toupper.c \
+				ft_atoi_max.c \
 				ft_error.c \
 				get_next_line.c \
 

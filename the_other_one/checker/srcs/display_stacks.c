@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_frame.c                                     :+:      :+:    :+:   */
+/*   display_stacks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/04 23:52:11 by dhojt             #+#    #+#             */
-/*   Updated: 2018/05/06 05:03:23 by dhojt            ###   ########.fr       */
+/*   Created: 2018/05/06 01:21:15 by dhojt             #+#    #+#             */
+/*   Updated: 2018/05/06 05:58:51 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#include "ft_printf.h"
 
-t_frame		*create_frame(t_frame *frame, int argc, char **argv)
+void		display_stacks(t_frame *frame)
 {
-	if (!(frame = (t_frame *)malloc(sizeof(t_frame))))
-		push_swap_error(frame);
-	frame->a = NULL;
-	frame->b = NULL;
-	frame->argc = argc;
-	frame->argv = argv;
-	return (frame);
+	t_stack		*stack_a;
+	t_stack		*stack_b;
+
+	stack_a = frame->a;
+	stack_b = frame->b;
+	ft_printf("%15s   %-15s\n", "Stack A", "Stack B");
+	while (stack_a != frame->a->prev)
+	{
+		ft_printf("%15d | %-15d\n", stack_a->num, stack_a->num);
+		stack_a = stack_a->next;
+	}
+	ft_printf("%15d | %-15d\n", stack_a->num, stack_a->num);
 }

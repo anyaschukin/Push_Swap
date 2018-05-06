@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/05 20:55:10 by dhojt             #+#    #+#             */
-/*   Updated: 2018/05/05 23:31:29 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/05/06 05:05:40 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		stack_add_end(t_frame *frame, char stack_name, int num)
 	if (*top)
 	{
 		if (!(tmp = (t_stack *)malloc(sizeof(t_stack))))
-			push_swap_exit(frame);
+			push_swap_error(frame);
 		tmp->next = *top;
 		tmp->prev = (*top)->prev;
 		(*top)->prev = tmp;
@@ -34,7 +34,7 @@ void		stack_add_end(t_frame *frame, char stack_name, int num)
 	else
 	{
 		if (!(*top = (t_stack *)malloc(sizeof(t_stack))))
-			push_swap_exit(frame);
+			push_swap_error(frame);
 		(*top)->next = *top;
 		(*top)->prev = *top;
 		(*top)->num = num;

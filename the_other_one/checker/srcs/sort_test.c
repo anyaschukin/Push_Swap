@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_frame.c                                     :+:      :+:    :+:   */
+/*   sort_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/04 23:52:11 by dhojt             #+#    #+#             */
-/*   Updated: 2018/05/06 05:03:23 by dhojt            ###   ########.fr       */
+/*   Created: 2018/05/06 04:47:02 by dhojt             #+#    #+#             */
+/*   Updated: 2018/05/06 05:59:42 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-t_frame		*create_frame(t_frame *frame, int argc, char **argv)
+void	sort_test(t_frame *frame)
 {
-	if (!(frame = (t_frame *)malloc(sizeof(t_frame))))
-		push_swap_error(frame);
-	frame->a = NULL;
-	frame->b = NULL;
-	frame->argc = argc;
-	frame->argv = argv;
-	return (frame);
+	t_stack		*tmp;
+
+	tmp = frame->a;
+	while (tmp->next != frame->a)
+	{
+		if (tmp->num > tmp->next->num)
+		{
+			write(1, "KO\n", 3);
+			exit(-1);
+		}
+		tmp = tmp->next;
+	}
+	write(1, "OK\n", 3);
 }
