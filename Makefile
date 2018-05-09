@@ -5,43 +5,32 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aschukin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/04/17 15:23:21 by aschukin          #+#    #+#              #
-#    Updated: 2018/04/17 15:23:25 by aschukin         ###   ########.fr        #
+#    Created: 2018/05/09 11:26:59 by aschukin          #+#    #+#              #
+#    Updated: 2018/05/09 18:43:24 by aschukin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    =   push_swap.a
+#     TEMPORARY MAKEFILE        #
 
-SRCS    =   libft/ft_putchar.c \
-            libft/ft_putnbr.c \
-            libft/ft_putstr.c \
-            libft/ft_atoi.c \
-            libft/ft_isdigit.c \
-            srcs/push_swap.c \
-			srcs/checker.c \
-            srcs/ft_create_clist.c
+all: remove checker push_swap
 
-OBJS    =   $(SRCS:.c=.o)
+checker:
+	make -C libftprintf
+	cp libftprintf/libftprintf.a .
+	gcc srcs/checker/*.c srcs/shared/*.c libftprintf.a -o checker -I includes -I libftprintf/srcs/libft/includes/ -I libftprintf/includes
 
-RM      =   @rm -f
 
-CFLAGS  =   -Wall -Wextra -Werror
+##push_swap: 
+##	make -C libftprintf
+##	cp libftprintf/libftprintf.a .
+##	gcc srcs/push_swap/*.c srcs/shared/*.c libftprintf.a -o push_swap -I includes -I libftprintf/srcs/libft/includes/ -I libftprintf/includes
 
-.PHONY: all, clean, fclean, re
+remove:
+	rm -rf libftprintf.a checker push_swap
 
-$(NAME) :   $(OBJS)
-    @ar rc $(NAME) $(OBJS)
-	@echo "\033[32;1m Compilation completed! \033[0m"
+fclean:
+	make -C libftprintf fclean
+	rm -rf libftprintf.a checker push_swap
 
-all     :   $(NAME)
-
-clean   :
-    @make clean -C libft/
-	$(RM) $(OBJS)
-	@echo "\033[32;1m Cleanup Complete! \033[0m"
-
-fclean  :   clean
-    $(RM) $(NAME)
-	@echo "\033[32;1m Executables removed! \033[0m"
-
-re      :   fclean all
+re:
+	fclean all
