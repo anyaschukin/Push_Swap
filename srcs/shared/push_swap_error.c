@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 11:27:43 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/09 11:27:45 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/10 13:05:09 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void			push_swap_error(t_frame *frame)
 {
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	push_swap_free(frame);
 	exit(-1);
 }

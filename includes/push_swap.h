@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:47:32 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/09 18:33:41 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/10 10:30:56 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void		do_launch(t_frame *frame);
 void		sort_test(t_frame *frame);
 
 /* push_swap functions */
-
+void		push_swap(t_frame *frame);
+int			sorted(t_frame *frame);
 
 /* shared functions */
 

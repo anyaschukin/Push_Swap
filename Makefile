@@ -6,7 +6,7 @@
 #    By: aschukin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/09 11:26:59 by aschukin          #+#    #+#              #
-#    Updated: 2018/05/09 18:43:24 by aschukin         ###   ########.fr        #
+#    Updated: 2018/05/10 10:31:21 by aschukin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,10 @@ checker:
 	gcc srcs/checker/*.c srcs/shared/*.c libftprintf.a -o checker -I includes -I libftprintf/srcs/libft/includes/ -I libftprintf/includes
 
 
-##push_swap: 
-##	make -C libftprintf
-##	cp libftprintf/libftprintf.a .
-##	gcc srcs/push_swap/*.c srcs/shared/*.c libftprintf.a -o push_swap -I includes -I libftprintf/srcs/libft/includes/ -I libftprintf/includes
+push_swap: 
+	make -C libftprintf
+	cp libftprintf/libftprintf.a .
+	gcc srcs/push_swap/*.c srcs/shared/*.c libftprintf.a -o push_swap -I includes -I libftprintf/srcs/libft/includes/ -I libftprintf/includes
 
 remove:
 	rm -rf libftprintf.a checker push_swap

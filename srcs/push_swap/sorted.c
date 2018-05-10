@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   sorted.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/08 12:25:49 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/10 13:26:53 by aschukin         ###   ########.fr       */
+/*   Created: 2018/05/09 18:59:41 by aschukin          #+#    #+#             */
+/*   Updated: 2018/05/10 12:56:07 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-** Checker is launched by the main.
-** fill_stack_a is called to fill stack a with argv.
-** do_launch get command line arguments and executes the commands.
-** sort_test tests for if stack a is sorted or not following push swap.
-*/
-
-void	checker(t_frame *frame)
+int	sorted(t_frame *frame)
 {
-	fill_stack_a(frame);
-	display_stacks(frame);
-	do_launch(frame);
-	sort_test(frame);
-	push_swap_free(frame);
+	t_stack		*tmp;
+	int			error;
+
+	if (!frame->a || frame->b)
+		return (0);
+	tmp = frame->a;
+	while (tmp->next != frame->a)
+	{
+		if (tmp->num > tmp->next->num)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }
