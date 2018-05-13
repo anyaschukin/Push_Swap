@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:47:32 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/10 10:30:56 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/13 16:56:20 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,12 @@ typedef struct		s_frame
 {
 	struct s_stack	*a;
 	struct s_stack	*b;
-	int				argc;
+
+	int				argc; //
 	char			**argv;
+
+	char			*line;
+	char			*str;
 }					t_frame;
 
 /* Function for jump table */
@@ -48,8 +52,11 @@ void		do_launch(t_frame *frame);
 void		sort_test(t_frame *frame);
 
 /* push_swap functions */
+
 void		push_swap(t_frame *frame);
 int			sorted(t_frame *frame);
+int			median(t_frame *frame, char stack_name);
+int			find_stack_len(t_frame *frame, char stack_name);
 
 /* shared functions */
 

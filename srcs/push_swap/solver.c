@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_frame.c                                     :+:      :+:    :+:   */
+/*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/08 12:26:29 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/13 16:48:02 by aschukin         ###   ########.fr       */
+/*   Created: 2018/05/13 19:12:44 by aschukin          #+#    #+#             */
+/*   Updated: 2018/05/13 19:15:23 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_frame		*create_frame(t_frame *frame, int argc, char **argv)
+void	push_swap(t_frame *frame, t_frame *frame)
 {
-	if (!(frame = (t_frame *)malloc(sizeof(t_frame))))
-		push_swap_error(frame);
-	frame->a = NULL;
-	frame->b = NULL;
-	frame->argc = argc;
-	frame->argv = argv;
-	frame->line = NULL;
-	frame->str = NULL;
-	return (frame);
+	// finds median
+	// pushes everything below median into stack b
+	// sorts stack b
+	
+
+
+
 }

@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/08 12:27:17 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/08 12:27:22 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/13 16:50:48 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,21 @@ static t_table	do_launch_value(int execute_value)
 
 void			do_launch(t_frame *frame)
 {
-	static char		*str = NULL;
 	char			*ptr;
-	char			*line;
 	int				execute_value;
 	t_table			do_now;
 
-	str = ft_strdup(" s a b p r sa sb ss pa pb ra rb rr rra rrb rrr");
-	while ((get_next_line(0, &line)) == 1)
+	frame->str = ft_strdup(" s a b p r sa sb ss pa pb ra rb rr rra rrb rrr");
+	while ((get_next_line(0, &frame->line)) == 1)
 	{
-		ptr = ft_strstr(str, line);
-		execute_value = ptr - str;
+		ptr = ft_strstr(frame->str, frame->line);
+		execute_value = ptr - frame->str;
 		if (execute_value > 43 || execute_value < 0)
 			push_swap_error(frame);
-		free(line);
+		free(frame->line);
+		frame->line = NULL;
 		do_now = do_launch_value(execute_value);
 		do_now(frame);
 		display_stacks(frame);
 	}
-	free(str);
 }

@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 11:27:53 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/09 11:27:55 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/13 16:51:59 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ static void		free_frame(t_frame *frame)
 			free_stack(frame->a);
 		if (frame->b)
 			free_stack(frame->b);
+		if (frame->line)
+			free(frame->line);
+		if (frame->str)
+			free(frame->str);
 		free(frame);
 	}
 }

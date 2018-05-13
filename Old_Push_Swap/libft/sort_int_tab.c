@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_frame.c                                     :+:      :+:    :+:   */
+/*   sort_int_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/08 12:26:29 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/13 16:48:02 by aschukin         ###   ########.fr       */
+/*   Created: 2018/05/13 18:23:39 by aschukin          #+#    #+#             */
+/*   Updated: 2018/05/13 18:25:37 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_frame		*create_frame(t_frame *frame, int argc, char **argv)
+void	ft_sort_array(int *array, int len)
 {
-	if (!(frame = (t_frame *)malloc(sizeof(t_frame))))
-		push_swap_error(frame);
-	frame->a = NULL;
-	frame->b = NULL;
-	frame->argc = argc;
-	frame->argv = argv;
-	frame->line = NULL;
-	frame->str = NULL;
-	return (frame);
+	int i;
+	int swap;
+
+	i = 0;
+	swap = 0;
+	while (i < len - 1)
+	{
+		if (array[i] <= array[i + 1])
+			i++;
+		else
+		{
+			swap = array[i];
+			array[i] = array[i + 1];
+			array[i + 1] = swap;
+			i = 0;
+		}
+	}
 }

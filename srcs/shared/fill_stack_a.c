@@ -6,13 +6,41 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/08 12:29:58 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/08 12:30:00 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/13 15:43:14 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 #include <stdio.h>
+
+static long		atoi_push_swap(t_frame *frame, char *str)
+{
+	long	num;
+	int		i;
+	int		len;
+	int		sign;
+
+	num = 0;
+	i = 0;
+	len = 0;
+	sign = 1;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || str[i] == '\f')
+		i++;
+	str[i] == '-' ? (sign = -1) : 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] == '0')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = num * 10 + (str[i] - '0');
+		i++;
+		len++;
+	}
+	len > 10 ? push_swap_error(frame) : 0;
+	return (num * sign);
+}
 
 static void		check_duplicates(t_frame *frame)
 {
@@ -50,7 +78,7 @@ static void		complete_filling(t_frame *frame, char *str, int i, int j)
 				push_swap_error(frame);
 			if (!*str)
 				break ;
-			test_int_size = ft_atoi_max(str);
+			test_int_size = atoi_push_swap(frame, str);
 			if (test_int_size > 2147483647 || test_int_size < -2147483648)
 				push_swap_error(frame);
 			stack_add_end(frame, 'a', test_int_size);
@@ -82,10 +110,7 @@ static void		error_parser(t_frame *frame)
 						(str == frame->argv[i] || *(str - 1) == ' '))
 				str++;
 			else
-			{
-				write(1, "H\n", 2);
 				push_swap_error(frame);
-			}
 		}
 		str = frame->argv[++i];
 	}
