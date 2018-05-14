@@ -6,18 +6,27 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 19:12:44 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/13 19:15:23 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/13 19:40:26 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(t_frame *frame, t_frame *frame)
+// finds median
+// pushes everything below median into stack b
+// identifies biggest + smallest
+// push smallest to the end of A
+// push biggest to the front of A
+// sorts stack b
+
+void	solver(t_frame *frame)
 {
-	// finds median
-	// pushes everything below median into stack b
-	// sorts stack b
-	
+	int	stack_median;
+
+	if (sorted(frame))
+		return ;
+	stack_median = median(frame, 'a');
+	push_median(frame, stack_median);
 
 
 

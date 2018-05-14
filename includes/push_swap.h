@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:47:32 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/13 16:56:20 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/14 16:38:24 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void		sort_test(t_frame *frame);
 
 void		push_swap(t_frame *frame);
 int			sorted(t_frame *frame);
-int			median(t_frame *frame, char stack_name);
+long		median(t_frame *frame, char stack_name);
+void		push_median(t_frame *frame, long median);
 int			find_stack_len(t_frame *frame, char stack_name);
 
 /* shared functions */
