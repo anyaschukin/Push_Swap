@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 19:12:44 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/13 19:40:26 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/16 18:23:56 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	solver(t_frame *frame)
 {
 	int	stack_median;
 
-	if (sorted(frame))
-		return ;
-	stack_median = median(frame, 'a');
-	push_median(frame, stack_median);
-
-
-
+	if (!(sorted(frame)))
+	{
+		stack_median = median(frame, 'a');
+		push_median(frame, stack_median);
+		insertion_solve(frame, 'b', stack_median);
+	}
+	display_stacks(frame);
 }
