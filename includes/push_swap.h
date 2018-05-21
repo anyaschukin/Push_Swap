@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:47:32 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/16 18:46:48 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/21 16:55:40 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ typedef struct		s_frame
 
 	long			biggest;
 	long			smallest;
+	int				big_rotate; // how many moves for the biggest to reach top
+	int				big_rrotate;
+	int				small_rotate;
+	int				small_rrotate;
 }					t_frame;
 
 /* Function for jump table */
@@ -63,6 +67,7 @@ void		push_median(t_frame *frame, long median);
 void		solver(t_frame *frame);
 void		insertion_solve(t_frame *frame, char stack_name, long median);
 //void		push_half_median(t_frame *frame, char stack_name, long median);
+void		find_moves(t_frame *frame, char stack_name);
 int			find_stack_len(t_frame *frame, char stack_name);
 void		find_biggest_smallest(t_frame *frame, char stack_name);
 

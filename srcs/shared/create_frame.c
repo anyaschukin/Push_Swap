@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/08 12:26:29 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/16 16:46:23 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/21 16:25:14 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,9 @@ t_frame		*create_frame(t_frame *frame, int argc, char **argv)
 	frame->str = NULL;
 	frame->biggest = 0;
 	frame->smallest = 0;
+	frame->big_rotate = 0;
+	frame->big_rrotate = 0;
+	frame->small_rotate = 0;
+	frame->small_rrotate = 0;
 	return (frame);
 }

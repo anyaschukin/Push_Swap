@@ -6,11 +6,13 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 18:42:36 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/16 18:45:56 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/17 15:01:32 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/* Finds the biggest and smallest integers in the stack that is called */
 
 static void	find_smallest(t_frame *frame, char stack_name)
 {
