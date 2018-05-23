@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 09:32:39 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/22 16:19:42 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/23 15:36:31 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,24 @@ void	find_moves(t_frame *frame, char stack_name)
 	stack = (stack_name == 'a') ? frame->a : frame->b;
 	moves_smallest(frame, 'b');
 	moves_biggest(frame, 'b');
-	// need to figure out which is more efficient: bigger or smaller
+	printf("--BEFORE__\n");
+	printf("small_rotate %d\n", frame->small_rotate);
+	printf("small_rrotate %d\n", frame->small_rrotate);
+	printf("big_rotate %d\n", frame->big_rotate);
+	printf("big_rrotate %d\n", frame->big_rrotate);
+	if (frame->big_rotate != -1 && (frame->big_rotate >= frame->small_rotate && frame->big_rotate >= frame->small_rrotate))
+		frame->big_rotate = -1;
+	else if (frame->big_rrotate != -1 && (frame->big_rrotate >= frame->small_rotate && frame->big_rrotate >= frame->small_rrotate))
+		frame->big_rrotate = -1;
+	else if (frame->small_rotate != -1 && (frame->small_rotate >= frame->big_rotate && frame->small_rotate >= frame->big_rrotate))
+		frame->small_rotate = -1;
+	else if (frame->small_rrotate != -1 && (frame->small_rrotate >= frame->big_rotate && frame->small_rrotate >= frame->big_rrotate))
+		frame->small_rrotate = -1;
+	printf("--AFTER--\n");
+	printf("small_rotate %d\n", frame->small_rotate);
+	printf("small_rrotate %d\n", frame->small_rrotate);
+	printf("big_rotate %d\n", frame->big_rotate);
+	printf("big_rrotate %d\n", frame->big_rrotate);
 }
 
 

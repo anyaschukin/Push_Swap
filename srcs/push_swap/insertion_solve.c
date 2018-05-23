@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 13:46:51 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/22 16:16:19 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/23 16:38:18 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,24 @@ static void	push_biggest_to_a(t_frame *frame, char stack_name) //
 		stack_end = (stack_name == 'a') ? frame->a->prev : frame->b->prev; //
 		while (1)
 		{
+			while (stack->num != frame->biggest)
+				stack = stack->next;
 			if (stack->num == frame->biggest)
 			{
 				if (frame->big_rotate >= 0)
 					while (frame->big_rotate--)
+					{
 						do_rb(frame);
+						write(1, "rb\n", 3);
+					}
 				else if (frame->big_rrotate >= 0)
 					while (frame->big_rrotate--)
-						do_rrb(frame);
+					{	do_rrb(frame);
+						write(1, "rrb\n", 4); }
 				do_pa(frame);
+				write(1, "pa\n", 3);
+				break;
 			}
-			else
-				do_rb(frame);
 			if (stack == stack_end)
 				break;
 			stack = frame->b;
@@ -73,18 +79,26 @@ static void	push_smallest_to_a(t_frame *frame, char stack_name) //
 		stack_end = (stack_name == 'a') ? frame->a->prev : frame->b->prev; //
 		while (1)
 		{
+			while (stack->num != frame->smallest)
+				stack = stack->next;
 			if (stack->num == frame->smallest)
 			{
 				if (frame->small_rotate >= 0)
 					while (frame->small_rotate--)
+					{
 						do_rb(frame);
+						write(1, "rb\n", 3); }
 				else if (frame->small_rrotate >= 0)
 					while (frame->small_rrotate--)
+					{
 						do_rrb(frame);
+						write(1, "rrb\n", 4);  }
 				do_pa(frame);
+				write(1, "pa\n", 3);
+				break;
 			}
 			else
-				do_rb(frame);
+				stack = stack->next;
 			if (stack == stack_end)
 				break;
 			stack = frame->b;
@@ -133,17 +147,13 @@ void	insertion_solve(t_frame *frame, char stack_name, long median)
 	display_stacks(frame); //
 	reset_moves(frame);
 	find_biggest_smallest(frame, 'b');
+	printf("median %ld\n", median);
+	printf("smallest %ld\n", frame->smallest);
+	printf("biggest %ld\n", frame->biggest);
 	find_moves(frame, 'b');
-	printf("small_rotate %d\n", frame->small_rotate);
-	printf("small_rrotate %d\n", frame->small_rrotate);
-	printf("big_rotate %d\n", frame->big_rotate);
-	printf("big_rrotate %d\n", frame->big_rrotate);
 	if (stack && (frame->small_rotate >= 0 || frame->small_rrotate >= 0))
 		push_smallest_to_a(frame, 'b');
 	else if (stack && (frame->big_rotate >= 0 || frame->big_rrotate >= 0))
 		push_biggest_to_a(frame, 'b');
-	printf("median %ld\n", median);
-	printf("smallest %ld\n", frame->smallest);
-	printf("biggest %ld\n", frame->biggest);
 	display_stacks(frame); //
 }
