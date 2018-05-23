@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 09:32:39 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/22 16:19:42 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/22 13:38:44 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,80 +14,77 @@
 
 /* Calculates number of moves to top of stack */
 
-static void	moves_to_start(t_frame *frame, char stack_name, int flag)
+static void	moves_to_start(t_frame *frame, char stack_name) //
 {
 	t_stack	*stack;
 	t_stack	*tmp;
 	int		element;
+	int		rotate;
 
-	stack = (stack_name == 'a') ? frame->a : frame->b;
+	stack = (stack_name == 'a') ? frame->a : frame->b; //
 	if (stack)
+		tmp = (stack_name == 'a') ? frame->a : frame->b; // not sure start is needed
+	element = frame->smallest ? frame->smallest : frame->biggest;
+	rotate = frame->small_rotate? frame->small_rotate : frame->big_rotate;
+	frame->big_rotate = 0;
+	while (tmp->num != element)
 	{
-		tmp = (stack_name == 'a') ? frame->a : frame->b;
-		element = (flag == 1) ? frame->smallest : frame->biggest;
-		while (tmp->num != element)
-		{
-			flag == 1 ? frame->small_rotate++ : frame->big_rotate++;
-			tmp = tmp->next;
-		}
+		rotate++;
+		tmp = tmp->next;
 	}
 }
 
 /* Calculates moves to bottom of stack */
 
-static void	moves_to_end(t_frame *frame, char stack_name, int flag)
+static void	moves_to_end(t_frame *frame, char stack_name) //
 {
 	t_stack	*stack;
 	t_stack	*tmp;
 	int		element;
+	int		rrotate;
 
-	stack = (stack_name == 'a') ? frame->a : frame->b;
+	stack = (stack_name == 'a') ? frame->a : frame->b; //
 	if (stack)
-	{
 		tmp = (stack_name == 'a') ? frame->a->prev : frame->b->prev;
-		element = (flag == 1) ? frame->smallest : frame->biggest;
-		while (tmp->num != element)
-		{
-			flag == 1 ? frame->small_rrotate++ : frame->big_rrotate++;
-			tmp = tmp->prev;
-		}
-		flag == 1 ? frame->small_rrotate++ : frame->big_rrotate++;
+	element = frame->smallest ? frame->smallest : frame->biggest;
+	rrotate = frame->small_rrotate? frame->small_rrotate : frame->big_rrotate;
+	frame->big_rrotate = 0; // this is necessary
+	while (tmp->num != element)
+	{
+		rrotate++; // this is why small_rrotate doesn't work
+		tmp = tmp->prev;
 	}
 }
 
 static void	moves_smallest(t_frame *frame, char stack_name)
 {
 	t_stack	*stack;
-	int		flag;
 
 	stack = (stack_name == 'a') ? frame->a : frame->b;
-	flag = 1;
 	if (stack)
 	{
-		moves_to_start(frame, stack_name, flag);
-		moves_to_end(frame, stack_name, flag);
+		moves_to_start(frame, stack_name);
+		moves_to_end(frame, stack_name);
 		if (frame->small_rotate <= frame->small_rrotate)
-			frame->small_rrotate = -1;
+			frame->small_rrotate = 0;
 		else
-			frame->small_rotate = -1;
+			frame->small_rotate = 0;
 	}
 }
 
 static void	moves_biggest(t_frame *frame, char stack_name)
 {
 	t_stack	*stack;
-	int		flag;
 
-	stack = (stack_name == 'a') ? frame->a : frame->b;
-	flag = 2;
+	stack = (stack_name == 'a') ? frame->a : frame->b; //
 	if (stack)
 	{
-		moves_to_start(frame, stack_name, flag);
-		moves_to_end(frame, stack_name, flag);
+		moves_to_start(frame, stack_name);
+		moves_to_end(frame, stack_name);
 		if (frame->big_rotate <= frame->big_rrotate)
-			frame->big_rrotate = -1;
+			frame->big_rrotate = 0;
 		else
-			frame->big_rotate = -1;
+			frame->big_rotate = 0;
 	}
 }
 
@@ -106,7 +103,6 @@ void	find_moves(t_frame *frame, char stack_name)
 	stack = (stack_name == 'a') ? frame->a : frame->b;
 	moves_smallest(frame, 'b');
 	moves_biggest(frame, 'b');
-	// need to figure out which is more efficient: bigger or smaller
 }
 
 

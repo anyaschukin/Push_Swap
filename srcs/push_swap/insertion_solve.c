@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 13:46:51 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/21 17:48:28 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/22 16:16:19 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,13 @@ static void	push_biggest_to_a(t_frame *frame, char stack_name) //
 		{
 			if (stack->num == frame->biggest)
 			{
+				if (frame->big_rotate >= 0)
+					while (frame->big_rotate--)
+						do_rb(frame);
+				else if (frame->big_rrotate >= 0)
+					while (frame->big_rrotate--)
+						do_rrb(frame);
 				do_pa(frame);
-				do_sa(frame);
 			}
 			else
 				do_rb(frame);
@@ -70,10 +75,12 @@ static void	push_smallest_to_a(t_frame *frame, char stack_name) //
 		{
 			if (stack->num == frame->smallest)
 			{
-				while (frame->small_rotate-- >= 1)
-					do_ra(frame);
-				while (frame->small_rrotate-- >= 1)
-					do_rra(frame);
+				if (frame->small_rotate >= 0)
+					while (frame->small_rotate--)
+						do_rb(frame);
+				else if (frame->small_rrotate >= 0)
+					while (frame->small_rrotate--)
+						do_rrb(frame);
 				do_pa(frame);
 			}
 			else
@@ -122,18 +129,18 @@ void	insertion_solve(t_frame *frame, char stack_name, long median)
 	t_stack	*stack;
 
 	stack = (stack_name == 'a') ? frame->a : frame->b; // necessary?
-	reset_moves(frame);
 	median_top_a(frame, 'b', median);
 	display_stacks(frame); //
+	reset_moves(frame);
 	find_biggest_smallest(frame, 'b');
 	find_moves(frame, 'b');
 	printf("small_rotate %d\n", frame->small_rotate);
 	printf("small_rrotate %d\n", frame->small_rrotate);
 	printf("big_rotate %d\n", frame->big_rotate);
 	printf("big_rrotate %d\n", frame->big_rrotate);
-	if (stack && (frame->small_rotate > 1 || frame->small_rrotate > 1))
+	if (stack && (frame->small_rotate >= 0 || frame->small_rrotate >= 0))
 		push_smallest_to_a(frame, 'b');
-	else if (stack && (frame->big_rotate > 1 || frame->big_rrotate > 1))
+	else if (stack && (frame->big_rotate >= 0 || frame->big_rrotate >= 0))
 		push_biggest_to_a(frame, 'b');
 	printf("median %ld\n", median);
 	printf("smallest %ld\n", frame->smallest);
