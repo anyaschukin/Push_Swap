@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:47:32 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/21 16:55:40 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/25 12:20:24 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct		s_frame
 	char			*line;
 	char			*str;
 
+	long			median;
+
 	long			biggest;
 	long			smallest;
 	int				big_rotate; // how many moves for the biggest to reach top
@@ -62,10 +64,10 @@ void		sort_test(t_frame *frame);
 
 void		push_swap(t_frame *frame);
 int			sorted(t_frame *frame);
-long		median(t_frame *frame, char stack_name);
-void		push_median(t_frame *frame, long median);
+void		median(t_frame *frame, char stack_name);
+void		push_median(t_frame *frame);
 void		solver(t_frame *frame);
-void		insertion_solve(t_frame *frame, char stack_name, long median);
+void		insertion_solve(t_frame *frame, char stack_name);
 //void		push_half_median(t_frame *frame, char stack_name, long median);
 void		find_moves(t_frame *frame, char stack_name);
 int			find_stack_len(t_frame *frame, char stack_name);

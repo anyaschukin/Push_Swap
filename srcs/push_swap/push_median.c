@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/13 19:32:03 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/16 18:01:31 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/05/25 12:19:23 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	push_half_median(t_frame *frame, char stack_name, long median)
 
 /* Pushes every number below median into Stack b */
 
-void	push_median(t_frame *frame, long median)
+void	push_median(t_frame *frame)
 {
 	t_stack	*stack;
 	t_stack	*stack_a_end;
@@ -57,7 +57,7 @@ void	push_median(t_frame *frame, long median)
 	{
 		if (stack == stack_a_end)
 			flag = 1;
-		if (stack->num <= median) // push according to 1/2 median?
+		if (stack->num <= frame->median) // push according to 1/2 median?
 			do_pb(frame);
 		else
 			do_ra(frame);
