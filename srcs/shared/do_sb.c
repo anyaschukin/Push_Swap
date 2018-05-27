@@ -22,4 +22,6 @@ void	do_sb(t_frame *frame)
 		frame->b->num = frame->b->next->num;
 		frame->b->next->num = tmp;
 	}
+	if (frame->do_write)
+		write(1, "sb\n", 3);
 }

@@ -18,8 +18,6 @@
 // push smallest to stack a, then ra so smallest is in the back
 // always keep the median at the top of stack a
 
-/* Pushes the biggest in stack B to stack A */
-
 static void	reset_moves(t_frame *frame)
 {
 	frame->biggest = 0;
@@ -28,25 +26,12 @@ static void	reset_moves(t_frame *frame)
 	frame->big_rrotate = 0;
 	frame->small_rotate = 0;
 	frame->small_rrotate = 0;
+	frame->small_flag = 0;
 }
 
-static void sort_top_a(t_frame *frame)
-{
-	t_stack	*stack;
-	t_stack *tmp;
+/* Pushes biggest or smallest from stack B to stack A, in sorted order */
 
-	stack = frame->a;
-	tmp = stack->next;
-	while (stack->num < tmp->num)
-	{
-		do_sa(frame);
-		stack = stack->next;
-		tmp = tmp->next;
-		write(1,"WTF\n", 4);
-	}
-}
-
-static void	push_biggest_smallest_to_a(t_frame *frame, char stack_name) //
+static void	push_biggest_smallest_to_a(t_frame *frame) // not normed
 {
 	t_stack	*stack;
 	t_stack *stack_end;
@@ -72,7 +57,7 @@ static void	push_biggest_smallest_to_a(t_frame *frame, char stack_name) //
 				while (frame->big_rrotate--)
 					do_rrb(frame);		
 			do_pa(frame);
-			do_sa(frame);
+			frame->small_flag == 1 ? do_ra(frame) : 0;
 			break;
 		}
 		else
@@ -83,8 +68,31 @@ static void	push_biggest_smallest_to_a(t_frame *frame, char stack_name) //
 	}
 }
 
-/* Puts the median of both stacks at the top of stack A */
+/* finds smallest + biggest, whichever one is less moves to top A gets pushed to stack A */
 
+void	insertion_solve(t_frame *frame, char stack_name)
+{
+	if (frame->b)
+	{
+		while (frame->b)
+		{
+			reset_moves(frame);
+			find_biggest_smallest(frame, 'b');
+			find_moves(frame, 'b');
+			if (frame->b && (frame->small_rotate >= 0 || frame->small_rrotate >= 0 || frame->big_rotate >= 0 || frame->big_rrotate >= 0))
+				push_biggest_smallest_to_a(frame);
+			display_stacks(frame); //
+		}
+	}
+}
+
+
+		//	printf("median %ld\n", frame->median);
+		//	printf("smallest %ld\n", frame->smallest);
+		//	printf("biggest %ld\n", frame->biggest);
+
+/* Puts the median of both stacks at the top of stack A */
+/*
 static void	median_top_a(t_frame *frame, char stack_name) //
 {
 	t_stack	*stack;
@@ -111,28 +119,20 @@ static void	median_top_a(t_frame *frame, char stack_name) //
 			stack = frame->b;
 		}
 	}
-}
-
-// find smallest + biggest, whichever one is less moves to top a gets pushed
-
-void	insertion_solve(t_frame *frame, char stack_name)
+}*/
+/*
+static void sort_top_a(t_frame *frame)
 {
-//	t_stack	*stack;
+	t_stack	*stack;
+	t_stack *tmp;
 
-//	stack = (stack_name == 'a') ? frame->a : frame->b; // necessary?
-	median_top_a(frame, 'b');
-	display_stacks(frame); //
-	while (frame->b)
+	stack = frame->a;
+	tmp = stack->next;
+	while (stack->num < tmp->num)
 	{
-		reset_moves(frame);
-		find_biggest_smallest(frame, 'b');
-		printf("median %ld\n", frame->median);
-		printf("smallest %ld\n", frame->smallest);
-		printf("biggest %ld\n", frame->biggest);
-		find_moves(frame, 'b');
-		if (frame->b && (frame->small_rotate >= 0 || frame->small_rrotate >= 0 || frame->big_rotate >= 0 || frame->big_rrotate >= 0))
-			push_biggest_smallest_to_a(frame, stack_name);
-		sort_top_a(frame);
-		display_stacks(frame); //
+		do_sa(frame);
+		stack = stack->next;
+		tmp = tmp->next;
+		write(1,"WTF\n", 4);
 	}
-}
+}*/

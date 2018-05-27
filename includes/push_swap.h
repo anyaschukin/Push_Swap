@@ -40,6 +40,8 @@ typedef struct		s_frame
 	char			*line;
 	char			*str;
 
+	int				do_write;
+
 	long			median;
 
 	long			biggest;
@@ -48,6 +50,7 @@ typedef struct		s_frame
 	int				big_rrotate;
 	int				small_rotate;
 	int				small_rrotate;
+	int				small_flag;
 }					t_frame;
 
 /* Function for jump table */
@@ -65,7 +68,8 @@ void		sort_test(t_frame *frame);
 void		push_swap(t_frame *frame);
 int			sorted(t_frame *frame);
 void		median(t_frame *frame, char stack_name);
-void		push_median(t_frame *frame);
+void		push_above_median(t_frame *frame);
+void		push_below_median(t_frame *frame);
 void		solver(t_frame *frame);
 void		insertion_solve(t_frame *frame, char stack_name);
 //void		push_half_median(t_frame *frame, char stack_name, long median);

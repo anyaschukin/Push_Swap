@@ -41,14 +41,15 @@ void	push_half_median(t_frame *frame, char stack_name, long median)
 	}
 }*/
 
-/* Pushes every number below median into Stack b */
 
-void	push_median(t_frame *frame)
+
+/* Pushes every number above median into Stack b */
+
+void	push_above_median(t_frame *frame)
 {
 	t_stack	*stack;
 	t_stack	*stack_a_end;
 	int		flag;
-//	int		*top;
 
 	stack = frame->a;
 	stack_a_end = frame->a->prev;
@@ -66,7 +67,29 @@ void	push_median(t_frame *frame)
 		stack = frame->a;
 	}
 }
-	
+	/*
+void	push_below_median(t_frame *frame)
+{
+	t_stack	*stack;
+	t_stack	*stack_a_end;
+	int		flag;
+
+	stack = frame->a;
+	stack_a_end = frame->a->prev;
+	flag = 0;
+	while (1)
+	{
+		if (stack == stack_a_end)
+			flag = 1;
+		if (stack->num => frame->median) // push according to 1/2 median?
+			do_pb(frame);
+		else
+			do_ra(frame);
+		if (flag == 1)
+			break;
+		stack = frame->a;
+	}
+}*/
 	
 	
 	/*

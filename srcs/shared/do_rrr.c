@@ -16,4 +16,6 @@ void	do_rrr(t_frame *frame)
 {
 	do_rra(frame);
 	do_rrb(frame);
+	if (frame->do_write)
+		write(1, "rrr\n", 4);
 }

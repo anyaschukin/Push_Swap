@@ -22,4 +22,6 @@ void	do_sa(t_frame *frame)
 		frame->a->num = frame->a->next->num;
 		frame->a->next->num = tmp;
 	}
+	if (frame->do_write)
+		write(1, "sa\n", 3);
 }

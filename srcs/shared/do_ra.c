@@ -16,4 +16,6 @@ void	do_ra(t_frame *frame)
 {
 	if (frame->a)
 		frame->a = frame->a->next;
+	if (frame->do_write)
+		write(1, "ra\n", 3);
 }

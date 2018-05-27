@@ -16,4 +16,6 @@ void	do_rb(t_frame *frame)
 {
 	if (frame->b)
 		frame->b = frame->b->next;
+	if (frame->do_write)
+		write(1, "rb\n", 3);
 }

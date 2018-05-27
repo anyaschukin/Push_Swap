@@ -114,6 +114,8 @@ void	find_moves(t_frame *frame, char stack_name)
 		frame->small_rotate = -1;
 	else if (frame->small_rrotate != -1 && (frame->small_rrotate >= frame->big_rotate && frame->small_rrotate >= frame->big_rrotate))
 		frame->small_rrotate = -1;
+	if (frame->small_rotate != -1 || frame->small_rrotate != -1) 
+		frame->small_flag = 1;
 }
 
 

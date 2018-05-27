@@ -22,4 +22,6 @@ void	do_pa(t_frame *frame)
 		stack_del_top(frame, 'b');
 		stack_add_top(frame, 'a', tmp);
 	}
+	if (frame->do_write)
+		write(1, "pa\n", 3);
 }

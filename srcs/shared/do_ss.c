@@ -16,4 +16,6 @@ void	do_ss(t_frame *frame)
 {
 	do_sa(frame);
 	do_sb(frame);
+	if (frame->do_write)
+		write(1, "ss\n", 3);
 }

@@ -22,4 +22,6 @@ void	do_pb(t_frame *frame)
 		stack_del_top(frame, 'a');
 		stack_add_top(frame, 'b', tmp);
 	}
+	if (frame->do_write)
+		write(1, "pb\n", 3);
 }

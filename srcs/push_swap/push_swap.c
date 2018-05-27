@@ -17,6 +17,7 @@ void	push_swap(t_frame *frame)
 	int med;
 
 	fill_stack_a(frame);
+	frame->do_write = 1;
 	if (!sorted(frame))
 	{
 		solver(frame);

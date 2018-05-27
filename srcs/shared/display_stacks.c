@@ -50,6 +50,9 @@ static void display_printf(t_frame *frame, int a_flag, int b_flag)
 
 void		display_stacks(t_frame *frame)
 {
+	// if -v on command line, trigger usleep function
+	usleep(100000); // this is a number of microseconds
+	ft_printf("\E[H\E[2J"); // escape sequence to clear screen
 	ft_printf("%15s   %-15s\n", "Stack A", "Stack B");
 	display_printf(frame, 0, 0);	
 }
