@@ -71,7 +71,6 @@ void		push_swap(t_frame *frame);
 int			sorted(t_frame *frame);
 void		median(t_frame *frame, char stack_name);
 void		push_median(t_frame *frame, int split);
-//void		push_below_median(t_frame *frame);
 void		solver(t_frame *frame);
 void		insertion_solve(t_frame *frame);
 //void		push_half_median(t_frame *frame, char stack_name, long median);

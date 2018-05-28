@@ -12,13 +12,6 @@
 
 #include "push_swap.h"
 
-// finds median
-// pushes everything below median into stack b
-// identifies biggest + smallest
-// push smallest to the end of A
-// push biggest to the front of A
-// sorts stack b
-
 void	solver(t_frame *frame)
 {
 	if (!(sorted(frame)))

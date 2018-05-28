@@ -117,9 +117,3 @@ void	find_moves(t_frame *frame, char stack_name)
 	else if (frame->big_rotate != -1 || frame->big_rrotate != -1) 
 		frame->big_flag = 1;
 }
-
-
-
-
-
-
