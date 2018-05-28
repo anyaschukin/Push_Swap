@@ -15,6 +15,34 @@
 // if bigger than 1/2 median, push to top of B
 // if smaller than 1/2 median, push to bottom of B
 // once I use this function, make doesn't work
+
+/* Pushes every number above or below median into Stack b, based on split flag */
+
+void	push_median(t_frame *frame, int split)
+{
+	t_stack	*stack;
+	t_stack	*stack_a_end;
+	int		flag;
+
+	stack = frame->a;
+	stack_a_end = frame->a->prev;
+	flag = 0;
+	while (1)
+	{
+		if (stack == stack_a_end)
+			flag = 1;
+		if (split == 1 && stack->num <= frame->median) // push according to 1/2 median?
+			do_pb(frame);
+		else if (split == 2 && stack->num >= frame->median) // push according to 1/2 median?
+			do_pb(frame);
+		else
+			do_ra(frame);
+		if (flag == 1)
+			break;
+		stack = frame->a;
+	}
+}
+	
 /*
 void	push_half_median(t_frame *frame, char stack_name, long median)
 {
@@ -38,75 +66,5 @@ void	push_half_median(t_frame *frame, char stack_name, long median)
 			break;
 		half_median = median / 2;
 		stack = frame->b;
-	}
-}*/
-
-
-
-/* Pushes every number above median into Stack b */
-
-void	push_above_median(t_frame *frame)
-{
-	t_stack	*stack;
-	t_stack	*stack_a_end;
-	int		flag;
-
-	stack = frame->a;
-	stack_a_end = frame->a->prev;
-	flag = 0;
-	while (1)
-	{
-		if (stack == stack_a_end)
-			flag = 1;
-		if (stack->num <= frame->median) // push according to 1/2 median?
-			do_pb(frame);
-		else
-			do_ra(frame);
-		if (flag == 1)
-			break;
-		stack = frame->a;
-	}
-}
-	/*
-void	push_below_median(t_frame *frame)
-{
-	t_stack	*stack;
-	t_stack	*stack_a_end;
-	int		flag;
-
-	stack = frame->a;
-	stack_a_end = frame->a->prev;
-	flag = 0;
-	while (1)
-	{
-		if (stack == stack_a_end)
-			flag = 1;
-		if (stack->num => frame->median) // push according to 1/2 median?
-			do_pb(frame);
-		else
-			do_ra(frame);
-		if (flag == 1)
-			break;
-		stack = frame->a;
-	}
-}*/
-	
-	
-	/*
-	while (1)
-	{
-		if (stack == frame->a->prev)
-			flag = 1;
-		if (stack->num <= median)
-		{
-			while (frame->a->num > median) // rotate until frame->a->num == top
-				do_ra(frame);
-			do_pb(frame);
-			stack = frame->a;
-		}
-		else if (flag == 1)
-			break;
-		else
-			stack = stack->next;
 	}
 }*/

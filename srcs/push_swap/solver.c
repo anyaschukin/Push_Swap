@@ -21,12 +21,9 @@
 
 void	solver(t_frame *frame)
 {
-	int	stack_median;
-
 	if (!(sorted(frame)))
 	{
-		median(frame, 'a');
-		push_above_median(frame);
-		insertion_solve(frame, 'b');
+		insertion_solve(frame);
 	}
+//	display_stacks(frame);
 }

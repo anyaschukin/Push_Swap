@@ -48,9 +48,11 @@ typedef struct		s_frame
 	long			smallest;
 	int				big_rotate; // how many moves for the biggest to reach top
 	int				big_rrotate;
+	int				big_flag;
 	int				small_rotate;
 	int				small_rrotate;
 	int				small_flag;
+	int				after_rotate;
 }					t_frame;
 
 /* Function for jump table */
@@ -68,10 +70,10 @@ void		sort_test(t_frame *frame);
 void		push_swap(t_frame *frame);
 int			sorted(t_frame *frame);
 void		median(t_frame *frame, char stack_name);
-void		push_above_median(t_frame *frame);
-void		push_below_median(t_frame *frame);
+void		push_median(t_frame *frame, int split);
+//void		push_below_median(t_frame *frame);
 void		solver(t_frame *frame);
-void		insertion_solve(t_frame *frame, char stack_name);
+void		insertion_solve(t_frame *frame);
 //void		push_half_median(t_frame *frame, char stack_name, long median);
 void		find_moves(t_frame *frame, char stack_name);
 int			find_stack_len(t_frame *frame, char stack_name);

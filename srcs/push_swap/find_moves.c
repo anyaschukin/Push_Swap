@@ -100,8 +100,6 @@ static void	moves_biggest(t_frame *frame, char stack_name)
 void	find_moves(t_frame *frame, char stack_name)
 {
 	t_stack	*stack;
-	int		big;
-	int		small;
 
 	stack = (stack_name == 'a') ? frame->a : frame->b;
 	moves_smallest(frame, 'b');
@@ -116,6 +114,8 @@ void	find_moves(t_frame *frame, char stack_name)
 		frame->small_rrotate = -1;
 	if (frame->small_rotate != -1 || frame->small_rrotate != -1) 
 		frame->small_flag = 1;
+	else if (frame->big_rotate != -1 || frame->big_rrotate != -1) 
+		frame->big_flag = 1;
 }
 
 
