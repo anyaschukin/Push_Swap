@@ -39,21 +39,20 @@ static void	find_median(t_frame *frame, t_stack *stack, char stack_name)
 {
 	long	*array;
 	int		i;
-	int		stack_len;
 	int		half_len;
 
 	i = 0;
 	frame->median = 0;
-	stack_len = find_stack_len(frame, stack_name);
-	half_len = stack_len / 2;
-	if (!(array = (long*)malloc(sizeof(long) * stack_len + 1)))
+	frame->stack_len = find_stack_len(frame, stack_name);
+	half_len = frame->stack_len / 2;
+	if (!(array = (long*)malloc(sizeof(long) * frame->stack_len + 1)))
 		push_swap_error(frame);
-	while (i < stack_len)
+	while (i < frame->stack_len)
 	{
 		array[i++] = stack->num;
 		stack = stack->next;
 	}
-	sort_array(array, stack_len);
+	sort_array(array, frame->stack_len);
 	frame->median = array[half_len];
 	free(array);
 }

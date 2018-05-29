@@ -19,9 +19,7 @@ void	push_median(t_frame *frame, int split)
 	t_stack	*stack;
 	t_stack	*stack_a_end;
 	int		flag; 
-	// add an int "len" to keep track of what I've already sorted, that way I don't
-	// rotate past a huge stack of sorted numbers to get to the unsorted
-
+	
 	stack = frame->a;
 	stack_a_end = frame->a->prev;
 	flag = 0;
@@ -31,7 +29,7 @@ void	push_median(t_frame *frame, int split)
 			flag = 1;
 		if (split == 1 && stack->num <= frame->median)
 			do_pb(frame);
-		else if (split == 2 && stack->num > frame->median) // push according to 1/2 median?
+		else if (split == 2 && stack->num > frame->median)
 			do_pb(frame);
 		else if (split == 2 && stack->num == frame->smallest)
 			break;

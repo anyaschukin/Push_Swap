@@ -41,17 +41,19 @@ typedef struct		s_frame
 	char			*str;
 
 	int				do_write;
-
+	int				stack_len;
 	long			median;
 
 	long			biggest;
-	long			smallest;
 	int				big_rotate; // how many moves for the biggest to reach top
 	int				big_rrotate;
 	int				big_flag;
+	
+	long			smallest;
 	int				small_rotate;
 	int				small_rrotate;
 	int				small_flag;
+	
 	int				after_rotate;
 }					t_frame;
 
