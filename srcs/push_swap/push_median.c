@@ -12,17 +12,15 @@
 
 #include "push_swap.h"
 
-// if bigger than 1/2 median, push to top of B
-// if smaller than 1/2 median, push to bottom of B
-// once I use this function, make doesn't work
-
 /* Pushes every number above or below median into Stack b, based on split flag */
 
 void	push_median(t_frame *frame, int split)
 {
 	t_stack	*stack;
 	t_stack	*stack_a_end;
-	int		flag;
+	int		flag; 
+	// add an int "len" to keep track of what I've already sorted, that way I don't
+	// rotate past a huge stack of sorted numbers to get to the unsorted
 
 	stack = frame->a;
 	stack_a_end = frame->a->prev;
@@ -31,10 +29,12 @@ void	push_median(t_frame *frame, int split)
 	{
 		if (stack == stack_a_end)
 			flag = 1;
-		if (split == 1 && stack->num <= frame->median) // push according to 1/2 median?
+		if (split == 1 && stack->num <= frame->median)
 			do_pb(frame);
-		else if (split == 2 && stack->num >= frame->median) // push according to 1/2 median?
+		else if (split == 2 && stack->num > frame->median) // push according to 1/2 median?
 			do_pb(frame);
+		else if (split == 2 && stack->num == frame->smallest)
+			break;
 		else
 			do_ra(frame);
 		if (flag == 1)
@@ -42,29 +42,3 @@ void	push_median(t_frame *frame, int split)
 		stack = frame->a;
 	}
 }
-	
-/*
-void	push_half_median(t_frame *frame, char stack_name, long median)
-{
-	t_stack	*stack;
-	t_stack	*stack_b_end;
-	int		half_median;
-	int		flag;
-
-	stack = frame->b;
-	half_median = median / 2;
-	stack_b_end = frame->b->prev;
-	while (1)
-	{
-		if (stack == stack_b_end)
-			flag = 1;
-		while (stack->num < half_median--) // this is not going to work
-			do_rrb(frame);
-		while (stack->num >= half_median--)
-			do_rb(frame);
-		if (flag == 1)
-			break;
-		half_median = median / 2;
-		stack = frame->b;
-	}
-}*/

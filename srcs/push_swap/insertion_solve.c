@@ -91,7 +91,7 @@ void	insertion_solve(t_frame *frame)
 				|| frame->big_rotate >= 0 || frame->big_rrotate >= 0))
 				push_biggest_smallest_to_a(frame);
 		}
-		while (frame->after_rotate--)
+		while (--frame->after_rotate)
 			do_ra(frame);
 	//	display_stacks(frame); //
 		split++;
