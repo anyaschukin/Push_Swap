@@ -93,7 +93,7 @@ void	insertion_solve(t_frame *frame)
 		}
 		while (--frame->after_rotate)
 			do_ra(frame);
-		display_stacks(frame); //
+	//	display_stacks(frame); //
 		split++;
 		if (split == 3)
 			break;

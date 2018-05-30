@@ -42,7 +42,9 @@ typedef struct		s_frame
 
 	int				do_write;
 	int				stack_len;
+	long			quarter;
 	long			median;
+	long			three_quarters;
 
 	long			biggest;
 	int				big_rotate; // how many moves for the biggest to reach top
@@ -73,8 +75,10 @@ void		push_swap(t_frame *frame);
 int			sorted(t_frame *frame);
 void		median(t_frame *frame, char stack_name);
 void		push_median(t_frame *frame, int split);
+void		push_quarters(t_frame *frame, int split);
 void		solver(t_frame *frame);
 void		insertion_solve(t_frame *frame);
+void		insertion_solve_100(t_frame *frame);
 //void		push_half_median(t_frame *frame, char stack_name, long median);
 void		find_moves(t_frame *frame, char stack_name);
 int			find_stack_len(t_frame *frame, char stack_name);
