@@ -31,13 +31,33 @@ void	push_quarters(t_frame *frame, int split)
 		if (stack == stack_a_end)
 			flag = 1;
 		if (split == 1 && stack->num <= frame->quarter)
+		{
+			if (frame->b && frame->b->num > frame->quarter / 2)
+				do_rb(frame);
 			do_pb(frame);
+		}
+		//	do_pb(frame);
         else if (split == 2 && stack->num > frame->quarter && stack->num <= frame->median) //frame->half
+		{
+			if (frame->b && frame->b->num > (frame->median / 4) * 3)
+				do_rb(frame);
 			do_pb(frame);
+		}
+		//	do_pb(frame);
 		else if (split == 3 && stack->num > frame->median && stack->num <= frame->three_quarters)
+		{
+			if (frame->b && frame->b->num > (frame->median / 4) * 5)
+				do_rb(frame);
 			do_pb(frame);
+		}
+		//	do_pb(frame);
 		else if (split == 4 && stack->num > frame->three_quarters)
+		{
+			if (frame->b && frame->b->num > (frame->median / 4) * 7)
+				do_rb(frame);
 			do_pb(frame);
+		}
+		//	do_pb(frame);
         else if (split == 4 && stack->num == frame->smallest)
 			break;
 		else
