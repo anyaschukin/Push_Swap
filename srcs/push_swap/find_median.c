@@ -44,7 +44,6 @@ static void	find_median(t_frame *frame, t_stack *stack, char stack_name)
 	i = 0;
 	frame->stack_len = find_stack_len(frame, stack_name);
 	quarter_len = frame->stack_len / 4;
-//	half_len = frame->stack_len / 2;
 	if (!(array = (long*)malloc(sizeof(long) * frame->stack_len + 1)))
 		push_swap_error(frame);
 	while (i < frame->stack_len)

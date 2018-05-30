@@ -17,7 +17,7 @@ void	solver(t_frame *frame)
 	if (!(sorted(frame)))
 	{
 		if (find_stack_len(frame, 'a') <= 100)
-			insertion_solve(frame);	//	else
+			insertion_solve(frame);
 		else
 			insertion_solve_100(frame);
 	}

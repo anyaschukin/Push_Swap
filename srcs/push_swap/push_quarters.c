@@ -12,8 +12,10 @@
 
 #include "push_swap.h"
 
-/* Pushes every number above or below quarters into Stack b, */
-/* based on split flag */
+/* 
+** Pushes every number above or below quarters into Stack b,
+** based on split flag 
+*/
 
 void	push_quarters(t_frame *frame, int split)
 {
@@ -30,9 +32,9 @@ void	push_quarters(t_frame *frame, int split)
 			flag = 1;
 		if (split == 1 && stack->num <= frame->quarter)
 			do_pb(frame);
-        else if (split == 2 && stack->num <= frame->median) //frame->half
+        else if (split == 2 && stack->num > frame->quarter && stack->num <= frame->median) //frame->half
 			do_pb(frame);
-		else if (split == 3 && stack->num <= frame->three_quarters)
+		else if (split == 3 && stack->num > frame->median && stack->num <= frame->three_quarters)
 			do_pb(frame);
 		else if (split == 4 && stack->num > frame->three_quarters)
 			do_pb(frame);
