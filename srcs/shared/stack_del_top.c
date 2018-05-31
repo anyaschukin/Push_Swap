@@ -19,7 +19,7 @@ void		stack_del_top(t_frame *frame, char stack_name)
 
 	if (stack_name == 'a')
 		top = &frame->a;
-	else if (stack_name == 'b')
+	else
 		top = &frame->b;
 	if (*top)
 	{

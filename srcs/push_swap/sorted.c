@@ -15,7 +15,7 @@
 int	sorted(t_frame *frame)
 {
 	t_stack		*tmp;
-	int			error;
+//	int			error;
 
 	if (!frame->a || frame->b)
 		return (0);

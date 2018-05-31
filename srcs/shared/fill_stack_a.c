@@ -123,6 +123,7 @@ void			fill_stack_a(t_frame *frame)
 	int		j;
 
 	i = 1;
+	j = 0;
 	str = frame->argv[i];
 	error_parser(frame);
 	complete_filling(frame, str, i, j);

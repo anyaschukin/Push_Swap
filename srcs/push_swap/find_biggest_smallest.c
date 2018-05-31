@@ -22,8 +22,7 @@ void	find_smallest(t_frame *frame, char stack_name)
 
 	stack = (stack_name == 'a') ? frame->a : frame->b;
 	tmp = stack;
-	if (stack)
-		end = (stack_name == 'a') ? frame->a->prev : frame->b->prev;
+	end = (stack_name == 'a') ? frame->a->prev : frame->b->prev;
 	frame->smallest = frame->biggest;
 	while (1)
 	{
@@ -43,8 +42,7 @@ void	find_biggest(t_frame *frame, char stack_name)
 
 	stack = (stack_name == 'a') ? frame->a : frame->b;
 	tmp = stack;
-	if (stack)
-		end = (stack_name == 'a') ? frame->a->prev : frame->b->prev;
+	end = (stack_name == 'a') ? frame->a->prev : frame->b->prev;
 	while (1)
 	{
 		if (tmp->num >= frame->biggest)

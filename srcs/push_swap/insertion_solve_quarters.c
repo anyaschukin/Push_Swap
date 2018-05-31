@@ -29,11 +29,6 @@ static void	reset_moves(t_frame *frame)
 
 static void	push_biggest_smallest_to_a(t_frame *frame, t_stack *stack, t_stack *stack_end) // not normed
 {
-	t_stack	*stack;
-	t_stack *stack_end;
-
-	stack = frame->b;
-	stack_end = frame->b->prev;
 	while (1)
 	{
 		while (stack->num != frame->smallest && stack->num != frame->biggest)

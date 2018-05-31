@@ -14,8 +14,6 @@
 
 void	push_swap(t_frame *frame)
 {
-	int med;
-
 	fill_stack_a(frame);
 	frame->do_write = 1;
 	if (!sorted(frame))
@@ -23,9 +21,4 @@ void	push_swap(t_frame *frame)
 		solver(frame);
 		return ;
 	}
-//	med = median(frame, 'a');
-//	push_median(frame, med);
-//	if (!sorted(frame))
-//		algorithm(frame);
-//	push_swap_error(frame);
 }
