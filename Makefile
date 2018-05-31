@@ -17,13 +17,13 @@ all: remove checker push_swap
 checker:
 	make -C libftprintf
 	cp libftprintf/libftprintf.a .
-	gcc srcs/checker/*.c srcs/shared/*.c libftprintf.a -o checker -I includes -I libftprintf/srcs/libft/includes/ -I libftprintf/includes
+	gcc -Wall -Werror -Wextra srcs/checker/*.c srcs/shared/*.c libftprintf.a -o checker -I includes -I libftprintf/srcs/libft/includes/ -I libftprintf/includes
 
 
 push_swap: 
 	make -C libftprintf
 	cp libftprintf/libftprintf.a .
-	gcc srcs/push_swap/*.c srcs/shared/*.c libftprintf.a -o push_swap -I includes -I libftprintf/srcs/libft/includes/ -I libftprintf/includes
+	gcc -Wall -Werror -Wextra srcs/push_swap/*.c srcs/shared/*.c libftprintf.a -o push_swap -I includes -I libftprintf/srcs/libft/includes/ -I libftprintf/includes
 
 remove:
 	rm -rf libftprintf.a checker push_swap
