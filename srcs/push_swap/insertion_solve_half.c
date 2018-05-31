@@ -27,13 +27,8 @@ static void	reset_moves(t_frame *frame)
 
 /* Pushes biggest or smallest from stack B to stack A, in sorted order */
 
-static void	push_biggest_smallest_to_a(t_frame *frame) // not normed
+static void	push_biggest_smallest_to_a(t_frame *frame, t_stack *stack, t_stack *stack_end) // not normed
 {
-	t_stack	*stack;
-	t_stack *stack_end;
-
-	stack = frame->b;
-	stack_end = frame->b->prev;
 	while (1)
 	{
 		while (stack->num != frame->smallest && stack->num != frame->biggest)
@@ -90,7 +85,7 @@ void	insertion_solve_half(t_frame *frame)
 			find_moves(frame, 'b');
 			if (frame->b && (frame->small_rotate >= 0 || frame->small_rrotate >= 0 
 				|| frame->big_rotate >= 0 || frame->big_rrotate >= 0))
-				push_biggest_smallest_to_a(frame);
+				push_biggest_smallest_to_a(frame, frame->b, frame->b->prev);
 			display_stacks(frame); //
 		}
 		while (--frame->after_rotate)
