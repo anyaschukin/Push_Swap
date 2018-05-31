@@ -66,7 +66,7 @@ static void	push_biggest_smallest_to_a(t_frame *frame) // not normed
 	}
 }
 
-/* Finds median
+/* Finds stack A's median
 ** Pushes everything above/below median into stack B
 ** Identifies biggest + smallest
 ** Whichever one is fewer moves gets pushed to stack A
@@ -93,7 +93,7 @@ void	insertion_solve(t_frame *frame)
 		}
 		while (--frame->after_rotate)
 			do_ra(frame);
-	//	display_stacks(frame); //
+		display_stacks(frame); //
 		split++;
 		if (split == 3)
 			break;

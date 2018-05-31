@@ -77,12 +77,16 @@ void		median(t_frame *frame, char stack_name);
 void		push_median(t_frame *frame, int split);
 void		push_quarters(t_frame *frame, int split);
 void		solver(t_frame *frame);
+void		solve_5_or_less(t_frame *frame);
 void		insertion_solve(t_frame *frame);
 void		insertion_solve_100(t_frame *frame);
-//void		push_half_median(t_frame *frame, char stack_name, long median);
 void		find_moves(t_frame *frame, char stack_name);
+void		moves_to_start(t_frame *frame, char stack_name, int flag);
+void		moves_to_end(t_frame *frame, char stack_name, int flag);
 int			find_stack_len(t_frame *frame, char stack_name);
 void		find_biggest_smallest(t_frame *frame, char stack_name);
+void		find_smallest(t_frame *frame, char stack_name);
+void		find_biggest(t_frame *frame, char stack_name);
 
 /* shared functions */
 

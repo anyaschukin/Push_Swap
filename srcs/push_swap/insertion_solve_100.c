@@ -66,7 +66,7 @@ static void	push_biggest_smallest_to_a(t_frame *frame) // not normed
 	}
 }
 
-/* Finds median
+/* Divides stack A into quarters
 ** Pushes everything above/below quarters into stack B
 ** Identifies biggest + smallest
 ** Whichever one is fewer moves gets pushed to stack A

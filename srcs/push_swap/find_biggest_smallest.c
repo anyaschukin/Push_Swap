@@ -14,7 +14,7 @@
 
 /* Finds the biggest and smallest integers in the stack that is called */
 
-static void	find_smallest(t_frame *frame, char stack_name)
+void	find_smallest(t_frame *frame, char stack_name)
 {
 	t_stack		*stack;
 	t_stack		*tmp;
@@ -35,7 +35,7 @@ static void	find_smallest(t_frame *frame, char stack_name)
 	}
 }
 
-static void	find_biggest(t_frame *frame, char stack_name)
+void	find_biggest(t_frame *frame, char stack_name)
 {
 	t_stack		*stack;
 	t_stack		*tmp;
@@ -60,6 +60,6 @@ void		find_biggest_smallest(t_frame *frame, char stack_name)
 	t_stack		*stack;
 
 	stack = (stack_name == 'a') ? frame->a : frame->b;
-	find_biggest(frame, 'b');
 	find_smallest(frame, 'b');
+	find_biggest(frame, 'b');
 }

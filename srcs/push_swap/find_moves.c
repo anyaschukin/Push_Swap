@@ -14,7 +14,7 @@
 
 /* Calculates number of moves to top of stack */
 
-static void	moves_to_start(t_frame *frame, char stack_name, int flag)
+void	moves_to_start(t_frame *frame, char stack_name, int flag)
 {
 	t_stack	*stack;
 	t_stack	*tmp;
@@ -35,7 +35,7 @@ static void	moves_to_start(t_frame *frame, char stack_name, int flag)
 
 /* Calculates moves to bottom of stack */
 
-static void	moves_to_end(t_frame *frame, char stack_name, int flag)
+void	moves_to_end(t_frame *frame, char stack_name, int flag)
 {
 	t_stack	*stack;
 	t_stack	*tmp;
