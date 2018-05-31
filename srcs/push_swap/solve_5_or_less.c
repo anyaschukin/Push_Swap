@@ -47,7 +47,7 @@ static void	solve_5(t_frame *frame)
  
 void	solve_5_or_less(t_frame *frame)
 {
-    if (find_stack_len(frame, 'a') <= 3)
+    if (find_stack_len(frame, 'a') <= 3) // 2 , 4 
         solve_3(frame);
     else if (find_stack_len(frame, 'a') <= 5)
         solve_5(frame);

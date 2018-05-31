@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insertion_solve.c                                  :+:      :+:    :+:   */
+/*   insertion_solve_half.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/16 13:46:51 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/25 13:39:33 by aschukin         ###   ########.fr       */
+/*   Created: 2018/05/31 15:31:43 by aschukin          #+#    #+#             */
+/*   Updated: 2018/05/31 15:31:46 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	push_biggest_smallest_to_a(t_frame *frame) // not normed
 ** Pushes biggest to the top of A
 */
 
-void	insertion_solve(t_frame *frame)
+void	insertion_solve_half(t_frame *frame)
 {
 	int	split;
 
@@ -83,6 +83,7 @@ void	insertion_solve(t_frame *frame)
 	while (frame->a)
 	{
 		push_median(frame, split);
+		display_stacks(frame); //
 		while (frame->b)
 		{
 			find_biggest_smallest(frame, 'b');
@@ -90,6 +91,7 @@ void	insertion_solve(t_frame *frame)
 			if (frame->b && (frame->small_rotate >= 0 || frame->small_rrotate >= 0 
 				|| frame->big_rotate >= 0 || frame->big_rrotate >= 0))
 				push_biggest_smallest_to_a(frame);
+			display_stacks(frame); //
 		}
 		while (--frame->after_rotate)
 			do_ra(frame);

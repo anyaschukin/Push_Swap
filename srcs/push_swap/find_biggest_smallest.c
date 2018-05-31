@@ -60,6 +60,6 @@ void		find_biggest_smallest(t_frame *frame, char stack_name)
 	t_stack		*stack;
 
 	stack = (stack_name == 'a') ? frame->a : frame->b;
-	find_smallest(frame, 'b');
 	find_biggest(frame, 'b');
+	find_smallest(frame, 'b');
 }

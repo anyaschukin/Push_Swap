@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insertion_solve_100.c                              :+:      :+:    :+:   */
+/*   insertion_solve_quarters.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/29 11:49:07 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/29 11:49:11 by aschukin         ###   ########.fr       */
+/*   Created: 2018/05/31 15:33:46 by aschukin          #+#    #+#             */
+/*   Updated: 2018/05/31 15:33:49 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	push_biggest_smallest_to_a(t_frame *frame) // not normed
 ** Pushes biggest to the top of A
 */
 
-void	insertion_solve_100(t_frame *frame)
+void	insertion_solve_quarters(t_frame *frame)
 {
 	int	split;
 
