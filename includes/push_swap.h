@@ -18,6 +18,19 @@
 #include <stdio.h>
 #include <fcntl.h>
 
+# define QUARTER frame->quarter
+# define MEDIAN frame->median
+# define THREE_Q frame->three_quarters
+# define BIGGEST frame->biggest
+# define BIG_ROTATE frame->big_rotate
+# define BIG_RROTATE frame->big_rrotate
+# define BIG_FLAG frame->big_flag
+# define SMALLEST frame->smallest
+# define SMALL_ROTATE frame->small_rotate
+# define SMALL_RROTATE frame->small_rrotate
+# define SMALL_FLAG frame->small_flag
+
+
 /* circular doubly-linked list */
 
 typedef struct		s_stack
@@ -34,12 +47,11 @@ typedef struct		s_frame
 	struct s_stack	*a;
 	struct s_stack	*b;
 
-	int				argc; //
-	char			**argv;
-	
+	char			**argv;	
 	char			*line;
 	char			*str;
 
+	int				print_stacks;
 	int				do_write;
 	int				stack_len;
 	long			quarter;
@@ -47,7 +59,7 @@ typedef struct		s_frame
 	long			three_quarters;
 
 	long			biggest;
-	int				big_rotate; // how many moves for the biggest to reach top
+	int				big_rotate;
 	int				big_rrotate;
 	int				big_flag;
 	
@@ -65,13 +77,11 @@ typedef void			(*t_table)(t_frame *frame);
 
 /* checker functions */
 
-void		checker(t_frame *frame);
 void		do_launch(t_frame *frame);
 void		sort_test(t_frame *frame);
 
 /* push_swap functions */
 
-void		push_swap(t_frame *frame);
 int			sorted(t_frame *frame);
 void		median(t_frame *frame, char stack_name);
 void		push_median(t_frame *frame, int split);
@@ -90,10 +100,9 @@ void		find_biggest(t_frame *frame, char stack_name);
 
 /* shared functions */
 
-t_frame		*create_frame(t_frame *frame, int argc, char **argv);
+t_frame		*create_frame(t_frame *frame, char **argv);
 void		display_stacks(t_frame *frame);
 void		fill_stack_a(t_frame *frame);
-void		push_swap(t_frame *frame);
 void		push_swap_free(t_frame *frame);
 void		push_swap_error(t_frame *frame);
 void		stack_del_top(t_frame *frame, char stack_name);
