@@ -75,8 +75,6 @@ static void		complete_filling(t_frame *frame, char *str, int i, int j)
 			while (*(str + j) && (*(str + j) == '-' || *(str + j) == '+' ||
 						ft_isdigit(*(str + j))))
 				j++;
-			if (j > 11)
-				push_swap_error(frame);
 			if (!*str)
 				break ;
 			test_int_size = atoi_push_swap(frame, str);
