@@ -76,7 +76,7 @@ C_OBJ_PATH =	$(addprefix $(OBJ_DIR), $(C_OBJ))
 OBJ_PATH =		$(S_OBJ_PATH) $(P_OBJ_PATH) $(C_OBJ_PATH)
 
 all:			color do_libft $(OBJ_DIR) $(NAME)
-				@echo "\\n"PUSH_SWAP AND CHECKER COMPLETE"\\n"
+				@echo "\\n\033[32;1m PUSH_SWAP AND CHECKER COMPLETE \033[0m \\n"
 
 $(OBJ_DIR):
 				@mkdir -p $(OBJ_DIR)
@@ -117,12 +117,12 @@ colour:
 clean:			color
 				@/bin/rm -rf $(OBJ_DIR) $(LIBFT_A)
 				@make -C $(LIBFT) clean
-				@echo Cleaned libft object files
+				@echo "\\n\033[32;1m Cleaned libft object files \033[0m"
 
 fclean:			clean
 				@/bin/rm -f $(PUSH_SWAP) $(CHECKER) $(LIBFT_A)
 				@make -C $(LIBFT) fclean
-				@echo Cleaned $(NAME)
+				@echo "\\n\033[32;1m Cleaned $(NAME) \033[0m \\n"
 
 re: 			fclean all
 

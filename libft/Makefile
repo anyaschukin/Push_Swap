@@ -6,7 +6,7 @@
 #    By: aschukin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/26 10:27:55 by aschukin          #+#    #+#              #
-#    Updated: 2018/04/10 16:29:22 by aschukin         ###   ########.fr        #
+#    Updated: 2018/06/02 00:14:08 by aschukin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ libftcomp:
 
 $(NAME): libftcomp $(OBJ) $(LIB)
 	@libtool -static -o $(NAME) $(LIB) $(OBJ)
-	@echo "\033[32;1m LibftPrintf compilation completed! \033[0m"
 
 $(OBJ): $(OBJ_PATH) $(SRC) $(INC_PATH)
 	@gcc $(CFLAGS) -c $(SRC)
@@ -61,11 +60,9 @@ clean:
 	@rm -f $(OBJ)
 	@rm -f $(OBJ_NAME)
 	@rmdir $(OBJ_PATH) 2> /dev/null || true
-	@echo "\033[32;1m LibftPrintf cleanup Complete! \033[0m"
 
 fclean: clean
 	@make fclean -C libft/
 	@rm -f $(NAME)
-	@echo "\033[32;1m LibftPrintf executables removed! \033[0m"
 
 re: fclean all
