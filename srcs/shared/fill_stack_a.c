@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 #include "libft.h"
-#include <stdio.h>
 
 static long		atoi_push_swap(t_frame *frame, char *str)
 {

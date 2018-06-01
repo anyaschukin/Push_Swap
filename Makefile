@@ -5,32 +5,125 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aschukin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/05/09 11:26:59 by aschukin          #+#    #+#              #
-#    Updated: 2018/05/10 10:31:21 by aschukin         ###   ########.fr        #
+#    Created: 2018/06/01 21:46:20 by aschukin          #+#    #+#              #
+#    Updated: 2018/06/01 21:46:22 by aschukin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#     TEMPORARY MAKEFILE        #
+PUSH_SWAP =		push_swap
+CHECKER =		checker
+NAME =			$(PUSH_SWAP) $(CHECKER)
+LIBFT_A =		libftprintf.a
 
-all: remove checker push_swap
+COMP =			gcc -Wall -Werror -Wextra -I includes -I libft/includes -I libft/libft -c -o
 
-checker:
-	make -C libftprintf
-	cp libftprintf/libftprintf.a .
-	gcc -Wall -Werror -Wextra srcs/checker/*.c srcs/shared/*.c libftprintf.a -o checker -I includes -I libftprintf/srcs/libft/includes/ -I libftprintf/includes
+OBJ_DIR =		obj/
+S_SRC_DIR =		srcs/shared/
+P_SRC_DIR =		srcs/push_swap/
+C_SRC_DIR =		srcs/checker/
+LIBFT =			libft/
 
+S_SRC =			create_frame.c \
+				display_stacks.c \
+				do_pa.c \
+				do_pb.c \
+				do_ra.c \
+				do_rb.c \
+				do_rr.c \
+				do_rra.c \
+				do_rrb.c \
+				do_rrr.c \
+				do_sa.c \
+				do_sb.c \
+				do_ss.c \
+				fill_stack_a.c \
+				push_swap_error.c \
+				push_swap_free.c \
+				stack_add_end.c \
+				stack_add_top.c \
+				stack_del_top.c
 
-push_swap: 
-	make -C libftprintf
-	cp libftprintf/libftprintf.a .
-	gcc -Wall -Werror -Wextra srcs/push_swap/*.c srcs/shared/*.c libftprintf.a -o push_swap -I includes -I libftprintf/srcs/libft/includes/ -I libftprintf/includes
+P_SRC =			find_biggest_smallest.c \
+				find_median.c \
+				find_moves.c \
+				find_stack_len.c \
+				insertion_solve_half.c \
+				insertion_solve_quarters.c \
+				push_median.c \
+				push_quarters.c \
+				push_swap.c \
+				solve_5_or_less.c \
+				solver.c \
+				sorted.c
 
-remove:
-	rm -rf libftprintf.a checker push_swap
+C_SRC =			checker.c \
+				do_launch.c \
+				sort_test.c
 
-fclean:
-	make -C libftprintf fclean
-	rm -rf libftprintf.a checker push_swap
+S_OBJ =			$(S_SRC:%.c=%.o)
+P_OBJ =			$(P_SRC:%.c=%.o)
+C_OBJ =			$(C_SRC:%.c=%.o)
+OBJ =			$(S_OBJ) $(P_OBJ) $(C_OBJ)
 
-re:
-	fclean all
+S_SRC_PATH =   	$(S_SRC:%=$(S_SRC_DIR)%)
+P_SRC_PATH =   	$(P_SRC:%=$(P_SRC_DIR)%)
+C_SRC_PATH =   	$(C_SRC:%=$(C_SRC_DIR)%)
+SRC_PATH =		$(S_SRC_PATH) $(P_SRC_PATH) $(C_SRC_PATH)
+
+S_OBJ_PATH =	$(addprefix $(OBJ_DIR), $(S_OBJ))
+P_OBJ_PATH =	$(addprefix $(OBJ_DIR), $(P_OBJ))
+C_OBJ_PATH =	$(addprefix $(OBJ_DIR), $(C_OBJ))
+OBJ_PATH =		$(S_OBJ_PATH) $(P_OBJ_PATH) $(C_OBJ_PATH)
+
+all:			color do_libft $(OBJ_DIR) $(NAME)
+				@echo "\\n"PUSH_SWAP AND CHECKER COMPLETE"\\n"
+
+$(OBJ_DIR):
+				@mkdir -p $(OBJ_DIR)
+				@echo Create: Object directory
+
+$(NAME):		$(OBJ_PATH)
+				@gcc $(S_OBJ_PATH) $(P_OBJ_PATH) *.a -o push_swap \
+					-I includes -I libft/includes
+				@gcc $(S_OBJ_PATH) $(C_OBJ_PATH) *.a -o checker \
+					-I includes -I libft/includes
+
+$(S_OBJ_PATH):	$(S_SRC_PATH)
+				@$(MAKE) $(S_OBJ)
+
+$(P_OBJ_PATH):	$(P_SRC_PATH)
+				@$(MAKE) $(P_OBJ)
+
+$(C_OBJ_PATH):	$(C_SRC_PATH)
+				@$(MAKE) $(C_OBJ)
+
+$(S_OBJ):		$(LIBFT_A)
+				@echo Create: $(@:obj/%=%)"\x1b[1A\x1b[M"
+				@$(COMP) $(OBJ_DIR)$@ $(S_SRC_DIR)$(@:%.o=%.c)
+$(C_OBJ):		$(LIBFT_A)
+				@echo Create: $(@:obj/%=%)"\x1b[1A\x1b[M"
+				@$(COMP) $(OBJ_DIR)$@ $(C_SRC_DIR)$(@:%.o=%.c)
+$(P_OBJ):		$(LIBFT_A)
+				@echo Create: $(@:obj/%=%)"\x1b[1A\x1b[M"
+				@$(COMP) $(OBJ_DIR)$@ $(P_SRC_DIR)$(@:%.o=%.c)
+
+do_libft:
+				@make -C $(LIBFT)
+				@cp $(LIBFT)/$(LIBFT_A) .
+
+colour:
+				@echo "\x1b[36m""\x1b[1A\x1b[M"
+
+clean:			color
+				@/bin/rm -rf $(OBJ_DIR) $(LIBFT_A)
+				@make -C $(LIBFT) clean
+				@echo Cleaned libft object files
+
+fclean:			clean
+				@/bin/rm -f $(PUSH_SWAP) $(CHECKER) $(LIBFT_A)
+				@make -C $(LIBFT) fclean
+				@echo Cleaned $(NAME)
+
+re: 			fclean all
+
+.PHONY:			all clean flcean re color
