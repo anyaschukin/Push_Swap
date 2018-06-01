@@ -6,62 +6,69 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 15:31:43 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/31 15:31:46 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/06/01 18:23:20 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static void	reset_moves(t_frame *frame)
 {
-	frame->biggest = 0;
-	frame->big_rotate = 0;
-	frame->big_rrotate = 0;
-	frame->big_flag = 0;
-	frame->smallest = 0;
-	frame->small_rotate = 0;
-	frame->small_rrotate = 0;
-	frame->small_flag = 0;
+	BIGGEST = 0;
+	BIG_ROTATE = 0;
+	BIG_RROTATE = 0;
+	BIG_FLAG = 0;
+	SMALLEST = 0;
+	SMALL_ROTATE = 0;
+	SMALL_RROTATE = 0;
+	SMALL_FLAG = 0;
 }
 
-/* Pushes biggest or smallest from stack B to stack A, in sorted order */
+/*
+** Pushes biggest or smallest from stack B to stack A, in sorted order
+*/
 
-static void	push_biggest_smallest_to_a(t_frame *frame, t_stack *stack, t_stack *stack_end) // not normed
+static void	rotate_and_push_to_a(t_frame *frame)
+{
+	if (SMALL_ROTATE >= 0)
+		while (SMALL_ROTATE--)
+			do_rb(frame);
+	else if (SMALL_RROTATE >= 0)
+		while (SMALL_RROTATE--)
+			do_rrb(frame);
+	else if (BIG_ROTATE >= 0)
+		while (BIG_ROTATE--)
+			do_rb(frame);
+	else if (BIG_RROTATE >= 0)
+		while (BIG_RROTATE--)
+			do_rrb(frame);
+	do_pa(frame);
+	SMALL_FLAG ? do_ra(frame) : 0;
+	(BIG_FLAG || !frame->b) ? frame->after_rotate++ : 0;
+	reset_moves(frame);
+}
+
+static void	push_big_small(t_frame *frame, t_stack *stack, t_stack *stack_end)
 {
 	while (1)
 	{
-		while (stack->num != frame->smallest && stack->num != frame->biggest)
+		while (stack->num != SMALLEST && stack->num != BIGGEST)
 			stack = stack->next;
-		if (stack->num == frame->smallest || stack->num == frame->biggest)
+		if (stack->num == SMALLEST || stack->num == BIGGEST)
 		{
-			if (frame->small_rotate >= 0)
-				while (frame->small_rotate--)
-					do_rb(frame);
-			else if (frame->small_rrotate >= 0)
-				while (frame->small_rrotate--)
-					do_rrb(frame);
-			else if (frame->big_rotate >= 0)
-				while (frame->big_rotate--)
-					do_rb(frame);
-			else if (frame->big_rrotate >= 0) 
-				while (frame->big_rrotate--)
-					do_rrb(frame);		
-			do_pa(frame);
-			frame->small_flag ? do_ra(frame) : 0;
-			(frame->big_flag || !frame->b) ? frame->after_rotate++ : 0;
-			reset_moves(frame);
-			break;
+			rotate_and_push_to_a(frame);
+			break ;
 		}
 		else
 			stack = stack->next;
 		if (stack == stack_end)
-			break;
+			break ;
 		stack = frame->b;
 	}
 }
 
-/* Finds stack A's median
+/*
+** Finds stack A's median
 ** Pushes everything above/below median into stack B
 ** Identifies biggest + smallest
 ** Whichever one is fewer moves gets pushed to stack A
@@ -69,30 +76,27 @@ static void	push_biggest_smallest_to_a(t_frame *frame, t_stack *stack, t_stack *
 ** Pushes biggest to the top of A
 */
 
-void	insertion_solve_half(t_frame *frame)
+void		insertion_solve_half(t_frame *frame)
 {
 	int	split;
 
 	split = 1;
-	median(frame, 'a');	
+	median(frame, 'a');
 	while (frame->a)
 	{
 		push_median(frame, split);
-		display_stacks(frame); //
 		while (frame->b)
 		{
 			find_biggest_smallest(frame, 'b');
 			find_moves(frame, 'b');
-			if (frame->b && (frame->small_rotate >= 0 || frame->small_rrotate >= 0 
-				|| frame->big_rotate >= 0 || frame->big_rrotate >= 0))
-				push_biggest_smallest_to_a(frame, frame->b, frame->b->prev);
-			display_stacks(frame); //
+			if (frame->b && (SMALL_ROTATE >= 0 || SMALL_RROTATE >= 0
+				|| BIG_ROTATE >= 0 || BIG_RROTATE >= 0))
+				push_big_small(frame, frame->b, frame->b->prev);
 		}
 		while (--frame->after_rotate)
 			do_ra(frame);
-		display_stacks(frame); //
 		split++;
 		if (split == 3)
-			break;
+			break ;
 	}
 }

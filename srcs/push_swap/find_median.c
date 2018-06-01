@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	sort_array(long *array, int len) // replace with ft_sort_array from libft
+static void	sort_array(long *array, int len)
 {
 	long	tmp;
 	int		i;
@@ -33,7 +33,9 @@ static void	sort_array(long *array, int len) // replace with ft_sort_array from 
 	}
 }
 
-/* Stores the stack in an array, sorts the array, and finds the median */
+/*
+** Stores the stack in an array, sorts the array, and finds the median
+*/
 
 static void	find_median(t_frame *frame, t_stack *stack, char stack_name)
 {
@@ -44,7 +46,7 @@ static void	find_median(t_frame *frame, t_stack *stack, char stack_name)
 	i = 0;
 	frame->stack_len = find_stack_len(frame, stack_name);
 	quarter_len = frame->stack_len / 4;
-	if (!(array = (long*)malloc(sizeof(long) * frame->stack_len + 1)))
+	if (!(array = (long*)malloc(sizeof(long) * (frame->stack_len + 1))))
 		push_swap_error(frame);
 	while (i < frame->stack_len)
 	{
@@ -52,9 +54,9 @@ static void	find_median(t_frame *frame, t_stack *stack, char stack_name)
 		stack = stack->next;
 	}
 	sort_array(array, frame->stack_len);
-	frame->quarter = array[quarter_len];
-	frame->median = array[quarter_len * 2];
-	frame->three_quarters = array[quarter_len * 3];
+	QUARTER = array[quarter_len];
+	MEDIAN = array[quarter_len * 2];
+	THREE_Q = array[quarter_len * 3];
 	free(array);
 }
 

@@ -25,7 +25,8 @@ static long		atoi_push_swap(t_frame *frame, char *str)
 	i = 0;
 	len = 0;
 	sign = 1;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || str[i] == '\f')
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f')
 		i++;
 	str[i] == '-' ? (sign = -1) : 0;
 	if (str[i] == '-' || str[i] == '+')
@@ -124,6 +125,11 @@ void			fill_stack_a(t_frame *frame)
 
 	i = 1;
 	j = 0;
+	if (ft_strcmp(frame->argv[i], "-v") == 0)
+	{
+		frame->argv++;
+		frame->print_stacks = 1;
+	}
 	str = frame->argv[i];
 	error_parser(frame);
 	complete_filling(frame, str, i, j);

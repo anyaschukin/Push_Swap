@@ -6,14 +6,13 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/08 12:27:17 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/14 11:35:42 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/06/01 18:22:44 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 #include "ft_printf.h"
-#include "get_next_line.h"
 
 static t_table	do_launch_value(int execute_value)
 {
@@ -44,16 +43,17 @@ void			do_launch(t_frame *frame)
 	t_table			do_now;
 
 	frame->str = ft_strdup(" s a b p r sa sb ss pa pb ra rb rr rra rrb rrr");
+	display_stacks(frame);
 	while ((get_next_line(0, &frame->line)) == 1)
 	{
-		ptr = ft_strnstr(frame->str, frame->line, ft_strlen(frame->line));
+		ptr = ft_strstr(frame->str, frame->line);
 		execute_val = ptr - frame->str;
 		if (execute_val > 43 || execute_val < 0 || ft_strchr(frame->line, ' '))
 			push_swap_error(frame);
-		free(frame->line);
-		frame->line = NULL;
 		do_now = do_launch_value(execute_val);
 		do_now(frame);
 		display_stacks(frame);
+		free(frame->line);
+		frame->line = NULL;
 	}
 }

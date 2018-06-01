@@ -23,5 +23,4 @@ void	solver(t_frame *frame)
 		else
 			insertion_solve_quarters(frame);
 	}
-	display_stacks(frame);
 }
