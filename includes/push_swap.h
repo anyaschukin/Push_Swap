@@ -6,7 +6,7 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 15:47:32 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/25 12:20:24 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/06/02 13:51:33 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include <fcntl.h>
 
 # define QUARTER frame->quarter

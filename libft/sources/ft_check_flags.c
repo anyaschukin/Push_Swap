@@ -6,12 +6,11 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 18:39:14 by aschukin          #+#    #+#             */
-/*   Updated: 2018/04/09 15:55:17 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/06/02 13:51:48 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include <stdio.h>
 
 static int	is_flag(char c)
 {
