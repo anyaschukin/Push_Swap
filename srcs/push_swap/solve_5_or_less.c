@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static void		solve_3(t_frame *frame)
 {
@@ -31,36 +30,40 @@ static void		solve_3(t_frame *frame)
 
 static void		solve_4(t_frame *frame)
 {
-//	t_stack *stack_a;
-	t_stack	*stack_b;
-	t_stack	*tmp;
+	t_stack *stack_a;
 
-	median(frame, 'a');
-	push_median(frame, 1);
+	stack_a = frame->a;
 	find_biggest_smallest(frame, 'a');
-	moves_to_end(frame, 'a', 2);
-	if (BIG_RROTATE >= 1)
-		while (BIG_RROTATE-- > 1)
-			do_rra(frame);
-	stack_b = frame->b;
-	tmp = frame->b->next;
-	stack_b->num < tmp->num ? do_sb(frame) : 0;
-	do_pa(frame);
+	while (stack_a->num != SMALLEST)
+	{
+		do_ra(frame);
+		stack_a = stack_a->next;
+	}
+	do_pb(frame);
+	solve_3(frame);
 	do_pa(frame);
 }
 
 static void		solve_5(t_frame *frame)
 {
-	t_stack	*stack_b;
+	t_stack *stack_a_end;
 	t_stack	*tmp;
-
+	int		flag; 
+	
+	flag = 0;
+	stack_a_end = frame->a->prev;
 	median(frame, 'a');
-	push_median(frame, 1);
+	while (flag != 1)
+	{
+		frame->a == stack_a_end ? flag = 1 : 0;
+		if (frame->a->num < MEDIAN)
+			do_pb(frame);
+		else
+			do_ra(frame);
+	}
 	solve_3(frame);
-	stack_b = frame->b;
 	tmp = frame->b->next;
-	if (frame->b->num < tmp->num)
-		do_sb(frame);
+	frame->b->num < tmp->num ? do_sb(frame) : 0;
 	do_pa(frame);
 	do_pa(frame);
 }

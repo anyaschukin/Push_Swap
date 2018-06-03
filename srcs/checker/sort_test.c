@@ -14,16 +14,16 @@
 
 void	sort_test(t_frame *frame)
 {
-	t_stack		*tmp;
+	t_stack		*stack_a;
 	int			error;
 
-	tmp = frame->a;
+	stack_a = frame->a;
 	error = (frame->b) ? 1 : 0;
-	while (tmp->next != frame->a)
+	while (stack_a && stack_a->next != frame->a)
 	{
-		if (tmp->num > tmp->next->num)
+		if (stack_a->num > stack_a->next->num)
 			error = 1;
-		tmp = tmp->next;
+		stack_a = stack_a->next;
 	}
 	if (error)
 		write(1, "KO\n", 3);
