@@ -103,6 +103,7 @@ void		moves_to_end(t_frame *frame, char stack_name, int flag);
 void		moves_to_start(t_frame *frame, char stack_name, int flag);
 void		push_median(t_frame *frame, int split);
 void		push_quarters(t_frame *frame, int split);
+void		reset_moves(t_frame *frame);
 void		solve_5_or_less(t_frame *frame);
 void		solver(t_frame *frame);
 int			sorted(t_frame *frame);

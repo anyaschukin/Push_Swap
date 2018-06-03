@@ -11,19 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-
-static void	reset_moves(t_frame *frame)
-{
-	BIGGEST = 0;
-	BIG_ROTATE = 0;
-	BIG_RROTATE = 0;
-	BIG_FLAG = 0;
-	SMALLEST = 0;
-	SMALL_ROTATE = 0;
-	SMALL_RROTATE = 0;
-	SMALL_FLAG = 0;
-}
 
 /*
 ** Pushes biggest or smallest from stack B to stack A, in sorted order
@@ -86,7 +73,6 @@ void		insertion_solve_half(t_frame *frame)
 	while (frame->a)
 	{
 		push_median(frame, split);	
-//		display_stacks(frame);
 		while (frame->b)
 		{
 			find_biggest_smallest(frame, 'b');
@@ -97,9 +83,6 @@ void		insertion_solve_half(t_frame *frame)
 		}
 		while (--frame->after_rotate)
 			do_ra(frame);
-//		find_smallest(frame, 'a');
-//		while (frame->a->num != SMALLEST)
-//				do_ra(frame);
 		split++;
 		if (split == 3)
 			break ;

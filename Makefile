@@ -52,6 +52,7 @@ P_SRC =			find_biggest_smallest.c \
 				push_median.c \
 				push_quarters.c \
 				push_swap.c \
+				reset_moves.c \
 				solve_5_or_less.c \
 				solver.c \
 				sorted.c

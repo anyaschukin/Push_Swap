@@ -12,18 +12,6 @@
 
 #include "push_swap.h"
 
-static void	reset_moves(t_frame *frame)
-{
-	BIGGEST = 0;
-	BIG_ROTATE = 0;
-	BIG_RROTATE = 0;
-	BIG_FLAG = 0;
-	SMALLEST = 0;
-	SMALL_ROTATE = 0;
-	SMALL_RROTATE = 0;
-	SMALL_FLAG = 0;
-}
-
 /*
 ** Pushes biggest or smallest from stack B to stack A, in sorted order
 */
