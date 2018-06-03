@@ -12,6 +12,18 @@
 
 #include "push_swap.h"
 
+static void	reset_moves(t_frame *frame)
+{
+	BIGGEST = 0;
+	BIG_ROTATE = 0;
+	BIG_RROTATE = 0;
+	BIG_FLAG = 0;
+	SMALLEST = 0;
+	SMALL_ROTATE = 0;
+	SMALL_RROTATE = 0;
+	SMALL_FLAG = 0;
+}
+
 /*
 ** Pushes every number above or below quarters into Stack b,
 ** based on split flag
@@ -54,6 +66,7 @@ void		push_quarters(t_frame *frame, int split)
 	stack_a = frame->a;
 	stack_a_end = frame->a->prev;
 	flag = 0;
+	find_smallest(frame, 'a');
 	while (flag != 1)
 	{
 		if (stack_a == stack_a_end)
@@ -66,10 +79,13 @@ void		push_quarters(t_frame *frame, int split)
 			push_third_quarter(frame);
 		else if (split == 4 && stack_a->num > THREE_Q)
 			push_fourth_quarter(frame);
-		else if (split == 4 && stack_a->num == SMALLEST)
+		else if (stack_a->num == SMALLEST)
 			break ;
 		else
 			do_ra(frame);
 		stack_a = frame->a;
 	}
+	reset_moves(frame);
 }
+
+//else if (split == 4 && stack_a->num == SMALLEST)

@@ -11,6 +11,19 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
+
+static void	reset_moves(t_frame *frame)
+{
+	BIGGEST = 0;
+	BIG_ROTATE = 0;
+	BIG_RROTATE = 0;
+	BIG_FLAG = 0;
+	SMALLEST = 0;
+	SMALL_ROTATE = 0;
+	SMALL_RROTATE = 0;
+	SMALL_FLAG = 0;
+}
 
 /*
 ** Pushes every number above or below median into Stack b, based on split flag
@@ -25,6 +38,7 @@ void	push_median(t_frame *frame, int split)
 	stack = frame->a;
 	stack_a_end = frame->a->prev;
 	flag = 0;
+	find_smallest(frame, 'a');
 	while (1)
 	{
 		if (stack == stack_a_end)
@@ -33,7 +47,7 @@ void	push_median(t_frame *frame, int split)
 			do_pb(frame);
 		else if (split == 2 && stack->num > MEDIAN)
 			do_pb(frame);
-		else if (split == 2 && stack->num == SMALLEST)
+		else if (stack->num == SMALLEST)
 			break ;
 		else
 			do_ra(frame);
@@ -41,4 +55,5 @@ void	push_median(t_frame *frame, int split)
 			break ;
 		stack = frame->a;
 	}
+	reset_moves(frame);
 }

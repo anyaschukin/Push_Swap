@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 static void	reset_moves(t_frame *frame)
 {
@@ -84,7 +85,8 @@ void		insertion_solve_half(t_frame *frame)
 	median(frame, 'a');
 	while (frame->a)
 	{
-		push_median(frame, split);
+		push_median(frame, split);	
+//		display_stacks(frame);
 		while (frame->b)
 		{
 			find_biggest_smallest(frame, 'b');
@@ -95,6 +97,9 @@ void		insertion_solve_half(t_frame *frame)
 		}
 		while (--frame->after_rotate)
 			do_ra(frame);
+//		find_smallest(frame, 'a');
+//		while (frame->a->num != SMALLEST)
+//				do_ra(frame);
 		split++;
 		if (split == 3)
 			break ;

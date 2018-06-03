@@ -30,7 +30,9 @@
 # define SMALL_FLAG frame->small_flag
 
 
-/* circular doubly-linked list */
+/*
+** circular doubly-linked list 
+*/
 
 typedef struct		s_stack
 {
@@ -39,7 +41,9 @@ typedef struct		s_stack
 	struct s_stack	*prev;
 }					t_stack;
 
-/* typdef for stacks a + b */
+/*
+** typedef for stacks a + b 
+*/
 
 typedef struct		s_frame
 {
@@ -70,16 +74,22 @@ typedef struct		s_frame
 	int				after_rotate;
 }					t_frame;
 
-/* Function for jump table */
+/*
+** Function for jump table 
+*/
 
 typedef void			(*t_table)(t_frame *frame);
 
-/* checker functions */
+/*
+** checker functions 
+*/
 
 void		do_launch(t_frame *frame);
 void		sort_test(t_frame *frame);
 
-/* push_swap functions */
+/*
+** push_swap functions 
+*/
 
 void		find_moves(t_frame *frame, char stack_name);
 void		find_biggest_smallest(t_frame *frame, char stack_name);
@@ -97,7 +107,9 @@ void		solve_5_or_less(t_frame *frame);
 void		solver(t_frame *frame);
 int			sorted(t_frame *frame);
 
-/* shared functions */
+/*
+** shared functions 
+*/
 
 t_frame		*create_frame(t_frame *frame, char **argv);
 void		display_stacks(t_frame *frame);

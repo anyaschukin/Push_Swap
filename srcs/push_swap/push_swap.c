@@ -39,7 +39,7 @@ int			main(int argc, char **argv)
 
 	frame = NULL;
 	if (argc < 2)
-		push_swap_error(frame);
+		return (1);
 	frame = create_frame(frame, argv);
 	push_swap(frame);
 	push_swap_free(frame);
