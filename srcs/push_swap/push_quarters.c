@@ -79,7 +79,7 @@ void		push_quarters(t_frame *frame, int split)
 			push_third_quarter(frame);
 		else if (split == 4 && stack_a->num > THREE_Q)
 			push_fourth_quarter(frame);
-		else if (stack_a->num == SMALLEST)
+		else if (split == 4 && stack_a->num == SMALLEST)
 			break ;
 		else
 			do_ra(frame);
@@ -88,4 +88,3 @@ void		push_quarters(t_frame *frame, int split)
 	reset_moves(frame);
 }
 
-//else if (split == 4 && stack_a->num == SMALLEST)
