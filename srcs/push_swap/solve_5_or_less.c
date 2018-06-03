@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 static void		solve_3(t_frame *frame)
 {
@@ -27,28 +28,26 @@ static void		solve_3(t_frame *frame)
 	if (stack_a->num > tmp->num)
 		do_sa(frame);
 }
-/*
+
 static void		solve_4(t_frame *frame)
 {
-	t_stack	*stack_a;
+//	t_stack *stack_a;
+	t_stack	*stack_b;
 	t_stack	*tmp;
 
-	frame->print_stacks = 1;
-	find_biggest(frame, 'a');
+	median(frame, 'a');
+	push_median(frame, 1);
+	find_biggest_smallest(frame, 'a');
 	moves_to_end(frame, 'a', 2);
 	if (BIG_RROTATE >= 1)
 		while (BIG_RROTATE-- > 1)
 			do_rra(frame);
-	find_smallest(frame, 'a');
-	moves_to_start(frame, 'a', 1);
-	if (SMALL_ROTATE >= 1)
-		while (SMALL_ROTATE-- > 1)
-			do_sa(frame);
-	stack_a = frame->a->next;
-	tmp = frame->a->next->next;
-	if (stack_a->num > tmp->num)
-		do_sa(frame);
-}*/
+	stack_b = frame->b;
+	tmp = frame->b->next;
+	stack_b->num < tmp->num ? do_sb(frame) : 0;
+	do_pa(frame);
+	do_pa(frame);
+}
 
 static void		solve_5(t_frame *frame)
 {
@@ -70,8 +69,8 @@ void			solve_5_or_less(t_frame *frame)
 {
 	if (find_stack_len(frame, 'a') <= 3)
 		solve_3(frame);
-//	if (find_stack_len(frame, 'a') == 4)
-//		solve_4(frame);
+	if (find_stack_len(frame, 'a') == 4)
+		solve_4(frame);
 	else if (find_stack_len(frame, 'a') <= 5)
 		solve_5(frame);
 }
