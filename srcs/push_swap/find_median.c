@@ -55,7 +55,6 @@ static void	find_median(t_frame *frame, t_stack *stack, char stack_name)
 		stack = stack->next;
 	}
 	sort_array(array, frame->stack_len);
-//	printf("ARRAY %ld %ld %ld %ld %ld\n", array[0], array[1], array[2], array[3], array[4]);
 	QUARTER = array[quarter_len];
 	MEDIAN = array[quarter_len * 2];
 	THREE_Q = array[quarter_len * 3];

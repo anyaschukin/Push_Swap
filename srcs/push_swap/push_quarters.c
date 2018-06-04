@@ -45,20 +45,17 @@ static void	push_fourth_quarter(t_frame *frame)
 	do_pb(frame);
 }
 
-void		push_quarters(t_frame *frame, int split)
+void		push_quarters(t_frame *frame, t_stack *stack_a, int split)
 {
-	t_stack	*stack_a;
 	t_stack	*stack_a_end;
 	int		flag;
 
-	stack_a = frame->a;
 	stack_a_end = frame->a->prev;
 	flag = 0;
 	find_biggest_smallest(frame, 'a');
 	while (flag != 1)
 	{
-		if (stack_a == stack_a_end)
-			flag = 1;
+		stack_a == stack_a_end ? flag = 1 : 0;
 		if (split == 1 && stack_a->num <= QUARTER)
 			push_first_quarter(frame);
 		else if (split == 2 && stack_a->num > QUARTER && stack_a->num <= MEDIAN)
@@ -75,4 +72,3 @@ void		push_quarters(t_frame *frame, int split)
 	}
 	reset_moves(frame);
 }
-

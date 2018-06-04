@@ -12,6 +12,12 @@
 
 #include "push_swap.h"
 
+static void		solve_2(t_frame *frame)
+{
+	if (frame->a->num > frame->a->next->num)
+		do_sa(frame);
+}
+
 static void		solve_3(t_frame *frame)
 {
 	t_stack	*stack_a;
@@ -48,8 +54,8 @@ static void		solve_5(t_frame *frame)
 {
 	t_stack *stack_a_end;
 	t_stack	*tmp;
-	int		flag; 
-	
+	int		flag;
+
 	flag = 0;
 	stack_a_end = frame->a->prev;
 	median(frame, 'a');
@@ -70,9 +76,11 @@ static void		solve_5(t_frame *frame)
 
 void			solve_5_or_less(t_frame *frame)
 {
-	if (find_stack_len(frame, 'a') <= 3)
+	if (find_stack_len(frame, 'a') == 2)
+		solve_2(frame);
+	else if (find_stack_len(frame, 'a') == 3)
 		solve_3(frame);
-	if (find_stack_len(frame, 'a') == 4)
+	else if (find_stack_len(frame, 'a') == 4)
 		solve_4(frame);
 	else if (find_stack_len(frame, 'a') <= 5)
 		solve_5(frame);

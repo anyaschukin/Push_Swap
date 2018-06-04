@@ -44,11 +44,11 @@ void	find_biggest(t_frame *frame, char stack_name)
 
 	stack = (stack_name == 'a') ? frame->a : frame->b;
 	tmp = stack;
-	BIGGEST = tmp->num; // this was added to accommodate negative numbers
+	BIGGEST = tmp->num;
 	end = (stack_name == 'a') ? frame->a->prev : frame->b->prev;
 	while (1)
 	{
-		if (tmp->num > BIGGEST) // originally >= BIGGEST
+		if (tmp->num > BIGGEST)
 			BIGGEST = tmp->num;
 		if (tmp == end)
 			break ;

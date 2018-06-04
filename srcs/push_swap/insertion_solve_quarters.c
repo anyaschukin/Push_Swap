@@ -72,7 +72,7 @@ void		insertion_solve_quarters(t_frame *frame)
 	median(frame, 'a');
 	while (frame->a)
 	{
-		push_quarters(frame, split);
+		push_quarters(frame, frame->a, split);
 		while (frame->b)
 		{
 			find_biggest_smallest(frame, 'b');
