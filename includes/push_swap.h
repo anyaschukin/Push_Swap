@@ -77,58 +77,58 @@ typedef struct		s_frame
 ** Function for jump table
 */
 
-typedef void	(*t_table)(t_frame *frame);
+typedef void		(*t_table)(t_frame *frame);
 
 /*
 ** checker functions
 */
 
-void			do_launch(t_frame *frame);
-void			sort_test(t_frame *frame);
+void				do_launch(t_frame *frame);
+void				sort_test(t_frame *frame);
 
 /*
 ** push_swap functions
 */
 
-void			find_moves(t_frame *frame, char stack_name);
-void			find_biggest_smallest(t_frame *frame, char stack_name);
-void			find_biggest(t_frame *frame, char stack_name);
-void			find_smallest(t_frame *frame, char stack_name);
-int				find_stack_len(t_frame *frame, char stack_name);
-void			insertion_solve_half(t_frame *frame);
-void			insertion_solve_quarters(t_frame *frame);
-void			median(t_frame *frame, char stack_name);
-void			moves_to_end(t_frame *frame, char stack_name, int flag);
-void			moves_to_start(t_frame *frame, char stack_name, int flag);
-void			push_median(t_frame *frame, int split);
-void			push_quarters(t_frame *frame, t_stack *stack_a, int split);
-void			reset_moves(t_frame *frame);
-void			solve_5_or_less(t_frame *frame);
-void			solver(t_frame *frame);
-int				sorted(t_frame *frame);
+void				find_moves(t_frame *frame, char stack_name);
+void				find_biggest_smallest(t_frame *frame, char stack_name);
+void				find_biggest(t_frame *frame, char stack_name);
+void				find_smallest(t_frame *frame, char stack_name);
+int					find_stack_len(t_frame *frame, char stack_name);
+void				insertion_solve_half(t_frame *frame);
+void				insertion_solve_quarters(t_frame *frame);
+void				median(t_frame *frame, char stack_name);
+void				moves_to_end(t_frame *frame, char stack_name, int flag);
+void				moves_to_start(t_frame *frame, char stack_name, int flag);
+void				push_median(t_frame *frame, int split);
+void				push_quarters(t_frame *frame, t_stack *stack_a, int split);
+void				reset_moves(t_frame *frame);
+void				solve_5_or_less(t_frame *frame);
+void				solver(t_frame *frame);
+int					sorted(t_frame *frame);
 
 /*
 ** shared functions
 */
 
-t_frame			*create_frame(t_frame *frame, char **argv);
-void			display_stacks(t_frame *frame);
-void			do_pa(t_frame *frame);
-void			do_pb(t_frame *frame);
-void			do_ra(t_frame *frame);
-void			do_rb(t_frame *frame);
-void			do_rr(t_frame *frame);
-void			do_rra(t_frame *frame);
-void			do_rrb(t_frame *frame);
-void			do_rrr(t_frame *frame);
-void			do_sa(t_frame *frame);
-void			do_sb(t_frame *frame);
-void			do_ss(t_frame *frame);
-void			fill_stack_a(t_frame *frame);
-void			push_swap_error(t_frame *frame);
-void			push_swap_free(t_frame *frame);
-void			stack_add_end(t_frame *frame, char stack_name, int num);
-void			stack_del_top(t_frame *frame, char stack_name);
-void			stack_add_top(t_frame *frame, char stack_name, int num);
+t_frame				*create_frame(t_frame *frame, char **argv);
+void				display_stacks(t_frame *frame);
+void				do_pa(t_frame *frame);
+void				do_pb(t_frame *frame);
+void				do_ra(t_frame *frame);
+void				do_rb(t_frame *frame);
+void				do_rr(t_frame *frame);
+void				do_rra(t_frame *frame);
+void				do_rrb(t_frame *frame);
+void				do_rrr(t_frame *frame);
+void				do_sa(t_frame *frame);
+void				do_sb(t_frame *frame);
+void				do_ss(t_frame *frame);
+void				fill_stack_a(t_frame *frame);
+void				push_swap_error(t_frame *frame);
+void				push_swap_free(t_frame *frame);
+void				stack_add_end(t_frame *frame, char stack_name, int num);
+void				stack_del_top(t_frame *frame, char stack_name);
+void				stack_add_top(t_frame *frame, char stack_name, int num);
 
 #endif
