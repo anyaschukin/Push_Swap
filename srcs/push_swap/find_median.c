@@ -6,12 +6,11 @@
 /*   By: aschukin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/11 13:46:00 by aschukin          #+#    #+#             */
-/*   Updated: 2018/05/25 12:22:21 by aschukin         ###   ########.fr       */
+/*   Updated: 2018/06/05 14:20:24 by aschukin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static void	sort_array(long *array, int len)
 {
