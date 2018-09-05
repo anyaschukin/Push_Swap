@@ -4,12 +4,14 @@
 
 ## Challenge
 
-Implement a bespoke sorting algorithm. <br />
-
-The task: sort a random list of integers (given via command line arguments), using the smallest number of moves, 2 stacks <br />
+Sort a random list of integers (given via command line arguments), using the smallest number of moves, 2 stacks
 and a limited set of operations. <br />
 <br />
-In this project, we start with two emtpy stacks: **stack a** and **stack b**. We must create two programs: ```checker``` and ```push_swap```. <br />
+
+You are allowed two use two stacks: **a** and **b**. <br />
+You must create two programs: ```checker``` and ```push_swap```. <br />
+<br />
+
 The ```checker``` program reads a random list of integers from the stdin, stores them in **stack a** and checks to see
 if they are sorted in ascending order. <br />
 The ```push_swap``` program calculates the moves to sort the integers – *pushing, popping, swapping* and *rotating* 
