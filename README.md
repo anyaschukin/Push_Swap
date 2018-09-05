@@ -33,7 +33,7 @@ At the end, **stack b** must empty empty and all integers must be in **stack a**
 <br />
 
 ## The Project
-You must create two programs: ```checker``` and ```push_swap```. <br />
+Create two programs: ```checker``` and ```push_swap```. <br />
 
 The ```checker``` program reads a random list of integers from the stdin, stores them, and checks to see
 if they are sorted. <br />
