@@ -18,6 +18,7 @@ them between **stack a** and **stack b** – and displays those directions on th
 You can pipe ```push_swap``` into ```checker```, and ```checker``` will verify that ```push_swap```'s instructions were successful. 
 <br />
 <br />
+
 Only these moves are allowed:
 - `sa` : swap a - swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements).
 - `sb` : swap b - swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements).
@@ -33,6 +34,7 @@ the last one.
 - `rra` : reverse rotate a - shift down all elements of stack a by 1. The last element becomes the first one.
 - `rrb` : reverse rotate b - shift down all elements of stack b by 1. The last element becomes the first one.
 - `rrr` : `rra` and `rrb` at the same time.
+<br />
 
 **Push_Swap** must conform to the [42 Norm](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf). <br />
 Using normal ```libc``` functions is strictly forbidden. Students are however, allowed to use: ```write```, ```read```, ```malloc```, ```free```, ```exit```. 
