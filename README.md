@@ -68,3 +68,10 @@ You can run the two together using:
 ```
 Note: the **-v (debug) flag** shows the stack status after each operation. 
 ![screen capture of checker and push_swap](./images/visualizer.gif)
+<br />
+
+To see push_swap in action, run ```make``` and then the following script:
+```
+python3 pyviz.py `ruby -e "puts (-200..200).to_a.shuffle.join(' ')"`
+```
+![screen capture of checker and push_swap](./images/visualizer2.gif)
