@@ -81,6 +81,6 @@ Note: the **-v (debug) flag** shows the stack status after each operation.
 
 To see push_swap in action, run ```make``` and then the following script:
 ```
-python3 pyviz.py `ruby -e "puts (-200..200).to_a.shuffle.join(' ')"`
+python3 pyviz.py `ruby -e "puts (1..20).to_a.shuffle.join(' ')"`
 ```
 ![screen capture of checker and push_swap](./images/visualizer2.gif)
