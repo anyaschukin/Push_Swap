@@ -1,5 +1,4 @@
 # Push_Swap
-A bespoke sorting algorithm, on 2 stacks. 
 
 #### Final Score 105/100
 
