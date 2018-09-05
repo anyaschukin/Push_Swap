@@ -8,17 +8,8 @@ Sort a random list of integers (given via command line arguments), using the sma
 and a limited set of operations. <br />
 <br />
 
-You are allowed two use two stacks: **a** and **b**. <br />
-You must create two programs: ```checker``` and ```push_swap```. <br />
+You start with two empty stacks: **a** and **b**. <br />
 <br />
-
-The ```checker``` program reads a random list of integers from the stdin, stores them in **stack a** and checks to see
-if they are sorted in ascending order. <br />
-The ```push_swap``` program calculates the moves to sort the integers – *pushing, popping, swapping* and *rotating* 
-them between **stack a** and **stack b** – and displays those directions on the stdout. <br />
-You can pipe ```push_swap``` into ```checker```, and ```checker``` will verify that ```push_swap```'s instructions were successful. 
-<br />
-<br /> 
 
 Only these moves are allowed:
 - `sa` : swap a - swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements).
@@ -35,6 +26,20 @@ the last one.
 - `rra` : reverse rotate a - shift down all elements of stack a by 1. The last element becomes the first one.
 - `rrb` : reverse rotate b - shift down all elements of stack b by 1. The last element becomes the first one.
 - `rrr` : `rra` and `rrb` at the same time.
+<br />
+
+At the end, **stack b** must empty empty and all integers must be in **stack a**, sorted in ascending order. <br />
+<br />
+
+## The Project
+You must create two programs: ```checker``` and ```push_swap```. <br />
+<br />
+
+The ```checker``` program reads a random list of integers from the stdin, stores them, and checks to see
+if they are sorted. <br />
+The ```push_swap``` program calculates the moves to sort the integers – *pushing, popping, swapping* and *rotating* 
+them between **stack a** and **stack b** – and displays those directions on the stdout. <br />
+You can pipe ```push_swap``` into ```checker```, and ```checker``` will verify that ```push_swap```'s instructions were successful. 
 <br />
 
 Both programs must mandatorily parse input for errors, including empty strings, no parameters, 
