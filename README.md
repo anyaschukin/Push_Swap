@@ -10,14 +10,13 @@ The task: sort a random list of integers (given via command line arguments), usi
 and a limited set of operations. <br />
 <br />
 In this project, we start with two emtpy stacks: **stack a** and **stack b**. We must create two programs: ```checker``` and ```push_swap```. <br />
-The ```checker``` program reads a random list of integers from the stdin, parses for errors (including empty strings, no parameters, 
-non-numeric parameters, duplicates, invalid/non-existent instructions), and checks to see
-if **stack a** is sorted. <br />
-The ```push_swap``` program calculates the moves to sort the integers – pushing, popping, swapping and rotating 
+The ```checker``` program reads a random list of integers from the stdin, stores them in **stack a** and checks to see
+if they are sorted in ascending order. <br />
+The ```push_swap``` program calculates the moves to sort the integers – *pushing, popping, swapping* and *rotating* 
 them between **stack a** and **stack b** – and displays those directions on the stdout. <br />
 You can pipe ```push_swap``` into ```checker```, and ```checker``` will verify that ```push_swap```'s instructions were successful. 
 <br />
-<br />
+<br /> 
 
 Only these moves are allowed:
 - `sa` : swap a - swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements).
@@ -36,6 +35,9 @@ the last one.
 - `rrr` : `rra` and `rrb` at the same time.
 <br />
 
+Both programs must mandatorily parse input for errors, including empty strings, no parameters, 
+non-numeric parameters, duplicates, and invalid/non-existent instructions.
+
 **Push_Swap** must conform to the [42 Norm](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf). <br />
 Using normal ```libc``` functions is strictly forbidden. Students are however, allowed to use: ```write```, ```read```, ```malloc```, ```free```, ```exit```. 
 It must not have any memory leaks. Errors must be handled carefully. <br />
@@ -49,10 +51,10 @@ The **checker** program is used as follows:
   ./checker 5 2 3 1 4
 ```
 ```c
-  ./checker "50 -400 72 1 100"
+  ./checker "-50 -400 -20 -1 -100"
 ```
 ```c
-  ./checker "-20" "35" "40" "-15" "75"
+  ./checker "-22" "35" "40" "-15" "75"
 ```
 
 The **push_swap** program is used in the same way
