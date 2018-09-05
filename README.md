@@ -67,4 +67,4 @@ You can run the two together using:
   ARG=`ruby -e "puts (0..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker -v $ARG
 ```
 Note: the **-v (debug) flag** shows the stack status after each operation. 
-![Screen capture of ARG="1 0 2 -9 3 8./push_swap $ARG | ./checker -v $ARG](./Desktop/visualizer.gif)
+![](.Users/aschukin/Desktop/visualizer.gif)
