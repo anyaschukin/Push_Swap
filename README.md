@@ -52,6 +52,22 @@ Using normal ```libc``` functions is strictly forbidden. Students are however, a
 It must not have any memory leaks. Errors must be handled carefully. <br />
 In no way can it quit in an unexpected manner (segmentation fault, bus error, double free, etc).
 
+## Approach
+
+I stored all integers parsed into the stack in a **doubly-circular linked list**. This permitted me to access both the top and bottom of each stack (**a** and **b**) in the fewest number of moves, giving me the most efficient access to sort through all integers.  <br />
+
+```./push_swap``` writes recommended moves to the ```stdout```, which ```./checker``` then reads off the ```stdin``` and parses. I used a **jump table** to parse the moves and then launch the corresponding function. This was much more efficient than an ```if tree```, and triggered an error message for invalid input. <br />
+
+A user can try this out on their own: just launch ```./checker```. To push an integer to **stack b**, type ```pb``` and hit ‘enter’. To see if a combination of moves has sorted the stack, type ```control D``` to finish, and the ```./checker``` will display “OK” for sorted or “KO” for unsorted. <br />
+
+The algorithms in ```./push_swap``` to sort the stack are relatively straight-forward. I had 3 different algorithms: one for 5 numbers or less, one for 100 numbers or less, and one for 500 numbers or less. <br />
+
+For 100 <  numbers, I find the median and push everything below the median into **stack b**. Then I identify each the largest and smallest integer in **stack b**, and determine which is most efficient to rotate up/down and push back to **stack a** (along with the specific moves to make that happen). Then I execute those moves. <br />
+
+In this way, integers are pushed back to **stack a** already sorted. I then repeat the process for everything above the median. <br />
+
+For 500 < numbers,  I executed the same process but divided **stack a** by quarters instead of median. <br />
+
 ## Usage
 Run ```make```.
 
