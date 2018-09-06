@@ -56,9 +56,9 @@ In no way can it quit in an unexpected manner (segmentation fault, bus error, do
 
 I stored all integers parsed into the stack in a **doubly-circular linked list**. This permitted me to access both the top and bottom of each stack (**a** and **b**) in the fewest number of moves, giving me the most efficient access to sort through all integers.  <br />
 
-```./push_swap``` writes recommended moves to the ```stdout```, which ```./checker``` then reads off the ```stdin``` and parses. I used a **jump table** to parse the moves and then launch the corresponding function. This was much more efficient than an ```if tree```, and triggered an error message for invalid input. <br />
+```./push_swap``` writes recommended moves to the ```stdout```, which ```./checker``` then reads off the ```stdin``` and parses. I used a **jump table** to parse the moves and launch the corresponding function. This was much more efficient than an ```if tree```, and triggered an error message for invalid input. <br />
 
-A user can try this out on their own: just launch ```./checker```. To push an integer to **stack b**, type ```pb``` and hit ‘enter’. To see if a combination of moves has sorted the stack, type ```control D``` to finish, and the ```./checker``` will display “OK” for sorted or “KO” for unsorted. <br />
+To try this out, launch ```./checker```. To push an integer to **stack b**, type ```pb``` and hit ‘enter’. To see if a combination of moves has sorted the stack, type ```control D``` to finish, and the ```./checker``` will display “OK” for sorted or “KO” for unsorted. <br />
 
 The algorithms in ```./push_swap``` to sort the stack are relatively straight-forward. I had 3 different algorithms: one for 5 numbers or less, one for 100 numbers or less, and one for 500 numbers or less. <br />
 
